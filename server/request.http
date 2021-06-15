@@ -1,0 +1,16 @@
+POST http://localhost:4444/api/auth/login
+Content-Type: application/json
+
+{
+    "username": "thaiabc",
+    "password": "1234"
+}
+
+###
+POST http://localhost:4444/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "thaiabc",
+    "password": "1234"
+}
