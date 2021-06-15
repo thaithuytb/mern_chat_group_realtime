@@ -31,7 +31,8 @@ const authController = {
                 }
 
                 // create token
-                const token = jwt.sign({ username }, process.env.ACCESS_TOKEN_MYSECRET);
+                const userId = user.id;
+                const token = jwt.sign({ userId }, process.env.ACCESS_TOKEN_MYSECRET);
                 res.json({
                     success: true,
                     accessToken: token,
@@ -82,9 +83,10 @@ const authController = {
             //save in db
             const user = new UsersDb({ username, password: hashPassword });
             user.save();
+            const userId = user._id;
 
             // create token
-            const token = jwt.sign({ username }, process.env.ACCESS_TOKEN_MYSECRET);
+            const token = jwt.sign({ userId }, process.env.ACCESS_TOKEN_MYSECRET);
             res.json({
                 success: true,
                 accessToken: token,

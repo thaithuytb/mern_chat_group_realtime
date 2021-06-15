@@ -11,6 +11,10 @@ POST http://localhost:4444/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "thaiabc",
+    "username": "abc",
     "password": "1234"
 }
+
+###
+POST http://localhost:4444/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFiYyIsImlhdCI6MTYyMzc3MDcxMX0.MhQjE3foaQ1OABbv6wUEIKYPmC6B2pKwd_vNmTO4U7E
