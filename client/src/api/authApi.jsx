@@ -6,6 +6,9 @@ const authApi = {
     },
     verifyTokenAuth : () => {
         return axios.get(`${REACT_APP_API_AUTH}`);
+    },
+    registerAuth: (user) => {
+        return axios.post(`${REACT_APP_API_AUTH}/register`, user );
     }
 }
 

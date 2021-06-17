@@ -85,3 +85,11 @@ button:hover {
     text-align: center;
     color: white;
 }
+/* validate  */
+p {
+    width: 100%;
+    color: rgb(245, 146, 146);
+    padding: 5px 10px 0px 10px;
+    text-align: start;
+    margin: 0px;
+}

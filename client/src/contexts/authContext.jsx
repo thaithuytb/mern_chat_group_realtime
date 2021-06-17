@@ -6,7 +6,6 @@ import { setHeadersToken } from '../utils/setHeadersToken';
 export const authContext = createContext();
 
 const AuthContextProvider = ({children}) => {
-    //login
     const [ authState , setAuthState] = useState({
         isLoading: true,
         isAuthenticated: false,
@@ -37,6 +36,7 @@ const AuthContextProvider = ({children}) => {
         };
         checkAndVerifyToken();
     }, [])
+    //login
     const userLoginForm = async (userForm) => {
         const { loginAuth } = authApi;
         try {
@@ -53,7 +53,25 @@ const AuthContextProvider = ({children}) => {
         }
     }
     //login
-    const authData = { userLoginForm, authState };
+    //register
+    const userRegisterForm = async (userForm) => {
+        const { registerAuth } = authApi;
+        try {
+            const response = await registerAuth(userForm);
+            if (response.data.success) {
+                const { accessToken, user } = response.data;
+                localStorage.setItem(LOCAL_STORAGE_TOKEN, accessToken);
+                setAuthState({...authState, isLoading: false ,isAuthenticated: true, user});
+            } else {
+                console.log(response.data);
+            }
+            return response.data;
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+    //register
+    const authData = { userLoginForm, userRegisterForm , authState };
     return (
         <authContext.Provider value={authData}>
             {children}

@@ -76,13 +76,13 @@ const authController = {
         const { username, password } = req.body;
 
         if (!username) {
-            return res.status(400).json({
+            return res.json({
                 success: false,
                 message: "username is obligatory",
             })
         };
         if (!password) {
-            return res.status(400).json({
+            return res.json({
                 success: false,
                 message: "password is obligatory",
             })
@@ -91,7 +91,7 @@ const authController = {
             // check user
             const userCheck = await UsersDb.findOne({ username });
             if (userCheck) {
-                return res.status(400).json({
+                return res.json({
                     success: false,
                     message: "username existed",
                 })

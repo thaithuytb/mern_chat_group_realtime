@@ -21,8 +21,8 @@ const LoginForm = () => {
   const onChangeValueUser = (e) => {
     setInforUser({...inforUser, [e.target.name]: e.target.value});
   }
-  //function userForm
-  const userForm = async (e) => {
+  //function userSubmitForm
+  const userSubmitForm = async (e) => {
     e.preventDefault();
     try {
       await userLoginForm({username, password});  
@@ -34,7 +34,7 @@ const LoginForm = () => {
   return (
     <div className='authFrom'>
     <h3>LOGIN</h3>
-    <Form onSubmit={userForm}>
+    <Form onSubmit={userSubmitForm}>
       <Form.Group className='formGroup'>
         <label>
           <FiUser />
