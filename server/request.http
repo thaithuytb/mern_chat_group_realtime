@@ -2,7 +2,7 @@ POST http://localhost:4444/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "thaiabc",
+    "username": "thaithuytb",
     "password": "1234"
 }
 
@@ -14,7 +14,11 @@ Content-Type: application/json
     "username": "thaithuytb",
     "password": "1234"
 }
+###
+
+GET http://localhost:4444/api/auth
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGM4YzdlMzc1OGFiOTE1YThkZWU5ZGUiLCJpYXQiOjE2MjM4OTkxNDV9.tIj5vw9zOWpOkTpYFJWIpT7DHShsBMUpoh4G1DmPO4w
 
 ###
 POST http://localhost:4444/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGM4YzdlMzc1OGFiOTE1YThkZWU5ZGUiLCJpYXQiOjE2MjM3NzExMDh9.Jrd82IGi_wHL64og4RyRcaOg6W8Mc5-Ydk4XMf2y3p0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGM4YzdlMzc1OGFiOTE1YThkZWU5ZGUiLCJpYXQiOjE2MjM4OTkxNDV9.tIj5vw9zOWpOkTpYFJWIpT7DHShsBMUpoh4G1DmPO4w

@@ -4,6 +4,9 @@ const authApi = {
     loginAuth: (user) => {
         return axios.post(`${REACT_APP_API_AUTH}/login`, user );
     },
+    verifyTokenAuth : () => {
+        return axios.get(`${REACT_APP_API_AUTH}`);
+    }
 }
 
 export default authApi;

@@ -2,6 +2,24 @@ const jwt = require('jsonwebtoken');
 const argon2 = require('argon2');
 const UsersDb = require('../models/users');
 const authController = {
+    //GET :api/auth
+    checkAndVerifyToke: async (req, res) => {
+        const _id = req.userId;
+        try {
+            const user = await UsersDb.findById({_id}).select('-password');
+            if (!user){
+               return  res.json({
+                success: false,
+            })
+            }
+            res.json({
+                success: true,
+                user
+            })    
+        } catch (error) {
+            console.log(error.message);
+        }
+    },
     //POST :api/auth/login
     authLogin: async (req, res) => {
         const { username, password } = req.body;
