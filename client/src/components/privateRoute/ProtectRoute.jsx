@@ -4,8 +4,6 @@ import { authContext } from "../../contexts/authContext";
 import Loading from "../loading/Loading";
 
 const ProtectRoute = ({ component: Component, ...rest }) => {
-
-
   const {
     authState: { isLoading ,isAuthenticated },
   } = useContext(authContext);
@@ -14,7 +12,7 @@ const ProtectRoute = ({ component: Component, ...rest }) => {
   }
   return (
     <Route
-      rest
+      {...rest}
       render={(props) =>
         isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
       }
