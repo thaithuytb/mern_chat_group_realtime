@@ -6,13 +6,13 @@ const authController = {
     authLogin: async (req, res) => {
         const { username, password } = req.body;
         if (!username) {
-            return res.status(400).json({
+            return res.json({
                 success: false,
                 message: "username is obligatory",
             })
         };
         if (!password) {
-            return res.status(400).json({
+            return res.json({
                 success: false,
                 message: "password is obligatory",
             })
@@ -24,7 +24,7 @@ const authController = {
                 //hash password
                 const checkPassword = await argon2.verify(user.password, password);
                 if (!checkPassword) {
-                    return res.status(401).json({
+                    return res.json({
                         success: false,
                         message: "username or password is incorrect"
                     })
@@ -41,7 +41,7 @@ const authController = {
                 
             }
             else {
-                return res.status(401).json({
+                return res.json({
                     success: false,
                     message: "username or password is incorrect"
                 })

@@ -1,41 +1,71 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, { useState, useContext } from "react";
+import { Link, Redirect } from 'react-router-dom';
 import { Form } from "react-bootstrap";
 import { FiLock, FiUser } from "react-icons/fi";
+import { authContext } from './../../contexts/authContext';
 
 import './style.css';
 const LoginForm = () => {
+  const [ inforUser, setInforUser ] = useState({
+    username: '',
+    password: ''
+  })
+  const {userLoginForm, authState: {isAuthenticated} } = useContext(authContext);
+
+  if (isAuthenticated) {
+    return <Redirect to='/dashboard' />
+  }
+
+  const { username, password } = inforUser;
+  //function onChangeValue
+  const onChangeValueUser = (e) => {
+    setInforUser({...inforUser, [e.target.name]: e.target.value});
+  }
+  //function userForm
+  const userForm = async (e) => {
+    e.preventDefault();
+    try {
+      await userLoginForm({username, password});   
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   return (
     <div className='authFrom'>
-      <h3>LOGIN</h3>
-      <Form>
-        <Form.Group className='formGroup'>
-          <label for="username">
-            <FiUser />
-          </label>
-          <input
-            type="text"
-            placeholder="username"
-            name="username"
-            id="username"
-          />
-        </Form.Group>
-        <Form.Group className='formGroup'>
-          <label for="password">
-            <FiLock />
-          </label>
-          <input
-            type="password"
-            placeholder="password"
-            name="password"
-            id="password"
-          />
-        </Form.Group>
-        <button>Sign in</button>
-      </Form>
-      <div className='redirectFrom'>Do you already have an account? <Link to='/register'>Register</Link></div>
-    </div>
+    <h3>LOGIN</h3>
+    <Form onSubmit={userForm}>
+      <Form.Group className='formGroup'>
+        <label>
+          <FiUser />
+        </label>
+        <input
+          type="text"
+          placeholder="username"
+          name="username"
+          onChange={onChangeValueUser}
+          value={username}
+        />
+      </Form.Group>
+      <Form.Group className='formGroup'>
+        <label>
+          <FiLock />
+        </label>
+        <input
+          type="password"
+          placeholder="password"
+          name="password"
+          onChange={onChangeValueUser}
+          value={password}
+        />
+      </Form.Group>
+      <button type='submit'>Sign in</button>
+    </Form>
+    <div className='redirectFrom'>Do you already have an account? <Link to='/register'>Register</Link></div>
+  </div>
   );
 };
 
 export default LoginForm;
+
+
