@@ -1,11 +1,17 @@
 import React, { useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
+import Loading from "../loading/Loading";
 
 const ProtectRoute = ({ component: Component, ...rest }) => {
+
+
   const {
-    authState: { isAuthenticated },
+    authState: { isLoading ,isAuthenticated },
   } = useContext(authContext);
+  if (isLoading) {
+    return <Loading />
+  }
   return (
     <Route
       rest

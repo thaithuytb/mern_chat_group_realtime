@@ -1,0 +1,62 @@
+.wp-loading {
+    background: #636063;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1111;
+}
+
+.loading {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 50%;
+    border-top: 12px solid #009688;
+    overflow: hidden;
+    animation: rotate 1.2s linear infinite;
+}
+.loading::before, 
+.loading::after {
+    content: '';
+    width: 200px;
+    height: 200px;
+    top: -12px;
+    left: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+.loading::before {
+    position: absolute;
+    border-top: 12px solid rgb(201, 87, 22);
+    transform: rotate(120deg);
+}
+.loading::after {
+    position: absolute;
+    border-top: 12px solid rgb(139, 25, 25);
+    transform: rotate(240deg);
+}
+.loading span {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    line-height: 200px;
+    animation: rotateFont 1.2s linear infinite;
+}
+
+@keyframes rotate {
+   to {
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotateFont {
+    to {
+       transform: rotate(-360deg);
+    }
+}

@@ -44,7 +44,7 @@ const AuthContextProvider = ({children}) => {
             if (response.data.success) {
                 const { accessToken, user } = response.data;
                 localStorage.setItem(LOCAL_STORAGE_TOKEN, accessToken);
-                setAuthState({...authState, isAuthenticated: true, user });
+                setAuthState({...authState, isLoading: false ,isAuthenticated: true, user});
             } else {
                 console.log(response.data);
             }

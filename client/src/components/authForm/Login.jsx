@@ -10,7 +10,7 @@ const LoginForm = () => {
     username: '',
     password: ''
   })
-  const {userLoginForm, authState: {isAuthenticated} } = useContext(authContext);
+  const {userLoginForm, authState: {isAuthenticated, isloading } } = useContext(authContext);
 
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />
@@ -25,7 +25,7 @@ const LoginForm = () => {
   const userForm = async (e) => {
     e.preventDefault();
     try {
-      await userLoginForm({username, password});   
+      await userLoginForm({username, password});  
     } catch (error) {
       console.log(error.message);
     }
