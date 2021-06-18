@@ -1,0 +1,42 @@
+.wp {
+    display: flex;
+    width: 100%;
+    min-height: 100%;
+}
+.sidebarShow {
+    position: relative;
+    height: 100vh;
+    background-color: #585757;
+    width: 60px;
+    transition: all 0.3s linear;
+}
+.sidebarHidden {
+    position: relative;
+    height: 100vh;
+    background-color: #585757;
+    width: 60px;
+    margin-left: -60px;
+    transition: all 0.3s linear;
+}
+.icon {
+    position: absolute;
+    top: -10px;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    right: -45px;
+    font-size: 45px;
+    color: black;
+}
+.content {
+    width: 100%;
+    text-align: start;
+    padding-left: 60px;
+}
+.logout {
+    border: 1px solid black;
+    padding: 5px;
+    width: min-content;
+    border-radius: 4px;
+    cursor: pointer;
+}

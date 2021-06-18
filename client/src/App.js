@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import AuthForm from './components/authForm/AuthForm';
 import Landing from './components/authForm/Landing';
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/dashboard/Dashboard';
 import ProtectRoute from './components/privateRoute/ProtectRoute';
 //import context
 import AuthContextProvider from './contexts/authContext';

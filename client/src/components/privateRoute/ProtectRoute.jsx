@@ -5,7 +5,7 @@ import Loading from "../loading/Loading";
 
 const ProtectRoute = ({ component: Component, ...rest }) => {
   const {
-    authState: { isLoading ,isAuthenticated },
+    authState: { isLoading ,isAuthenticated, user },
   } = useContext(authContext);
   if (isLoading) {
     return <Loading />
@@ -14,7 +14,7 @@ const ProtectRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
+        isAuthenticated ? <Component {...props} user={user}/> : <Redirect to="/login" />
       }
     />
   );

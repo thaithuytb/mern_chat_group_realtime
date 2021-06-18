@@ -13,27 +13,28 @@ const AuthContextProvider = ({children}) => {
     })
     // run when start in app, if we had have token => automatic redirect DASHBOARD
     // if mock token or dont have token => automatic redurect LOGIN
-    useEffect(() => {
-        const checkAndVerifyToken = async () => {
-            if(localStorage[LOCAL_STORAGE_TOKEN]) {
-                const { verifyTokenAuth } = authApi;
-                const token = localStorage[LOCAL_STORAGE_TOKEN];
-                //attach headers token
-                setHeadersToken(token);
-                try {
-                    const response = await verifyTokenAuth();
-                    if (response.data.success) {
-                        const { user } = response.data;
-                        setAuthState({...authState, isLoading: false, isAuthenticated: true, user });
-                    }
-                } catch (error) {
-                    console.log(error.message);
-                    setHeadersToken(null);     
+    const checkAndVerifyToken = async () => {
+        if(localStorage[LOCAL_STORAGE_TOKEN]) {
+            const { verifyTokenAuth } = authApi;
+            const token = localStorage[LOCAL_STORAGE_TOKEN];
+            //attach headers token
+            setHeadersToken(token);
+            try {
+                const response = await verifyTokenAuth();
+                if (response.data.success) {
+                    const { user } = response.data;
+                    setAuthState({...authState, isLoading: false, isAuthenticated: true, user });
                 }
-            } else {
-                setAuthState({...authState, isLoading: false });
+            } catch (error) {
+                console.log(error.message);
+                setHeadersToken(null);
+                localStorage.removeItem(LOCAL_STORAGE_TOKEN);     
             }
-        };
+        } else {
+            setAuthState({...authState, isLoading: false });
+        }
+    };
+    useEffect(() => {
         checkAndVerifyToken();
     }, [])
     //login
@@ -72,7 +73,13 @@ const AuthContextProvider = ({children}) => {
         }
     }
     //register
-    const authData = { userLoginForm, userRegisterForm , authState };
+    //logout
+    const userLogout = () => {
+        localStorage.removeItem(LOCAL_STORAGE_TOKEN);     
+        setAuthState({...authState, isLoading: false, isAuthenticated: false });
+    }
+    //logout
+    const authData = { userLoginForm, userRegisterForm , userLogout, authState };
     return (
         <authContext.Provider value={authData}>
             {children}

@@ -88,7 +88,7 @@ const RegisterForm = () => {
           </label>
           <input
             type="password"
-            placeholder="comfirm password"
+            placeholder="password"
             name="password"
             value={password}
             onChange={onChangeValueUser}
@@ -100,7 +100,7 @@ const RegisterForm = () => {
           </label>
           <input
             type="password"
-            placeholder="password"
+            placeholder="comfirm password"
             name="comfirmPassword"
             value={comfirmPassword}
             onChange={onChangeValueUser}
