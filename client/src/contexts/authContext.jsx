@@ -46,8 +46,9 @@ const AuthContextProvider = ({children}) => {
                 localStorage.setItem(LOCAL_STORAGE_TOKEN, accessToken);
                 setAuthState({...authState, isLoading: false ,isAuthenticated: true, user});
             } else {
-                console.log(response.data);
+                // console.log(response.data);
             }
+            return response.data;
         } catch (error) {
             console.log(error.message);
         }

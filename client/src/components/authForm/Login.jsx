@@ -3,14 +3,15 @@ import { Link, Redirect } from 'react-router-dom';
 import { Form } from "react-bootstrap";
 import { FiLock, FiUser } from "react-icons/fi";
 import { authContext } from './../../contexts/authContext';
-
+// import Loading from './../loading/Loading';
 import './style.css';
 const LoginForm = () => {
   const [ inforUser, setInforUser ] = useState({
     username: '',
     password: ''
   })
-  const {userLoginForm, authState: {isAuthenticated, isloading } } = useContext(authContext);
+  const [ dataFromServer, setDataFromServer ] = useState(null);
+  const {userLoginForm, authState: {isAuthenticated} } = useContext(authContext);
 
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />
@@ -25,7 +26,12 @@ const LoginForm = () => {
   const userSubmitForm = async (e) => {
     e.preventDefault();
     try {
-      await userLoginForm({username, password});  
+      const res = await userLoginForm({username, password});  
+      if (!res.success) {
+        setDataFromServer(res.message);
+      } else {
+        // history.push('/dashboard'); 
+      } 
     } catch (error) {
       console.log(error.message);
     }
@@ -34,6 +40,7 @@ const LoginForm = () => {
   return (
     <div className='authFrom'>
     <h3>LOGIN</h3>
+    { dataFromServer && <p>{dataFromServer}</p>}
     <Form onSubmit={userSubmitForm}>
       <Form.Group className='formGroup'>
         <label>
