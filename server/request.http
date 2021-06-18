@@ -12,6 +12,7 @@ Content-Type: application/json
 
 {
     "username": "thaithuytb",
+    "name": "thai",
     "password": "1234"
 }
 ###

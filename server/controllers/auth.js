@@ -26,13 +26,13 @@ const authController = {
         if (!username) {
             return res.json({
                 success: false,
-                message: "username is obligatory",
+                message: "Username is obligatory",
             })
         };
         if (!password) {
             return res.json({
                 success: false,
-                message: "password is obligatory",
+                message: "Password is obligatory",
             })
         }
         try {
@@ -44,7 +44,7 @@ const authController = {
                 if (!checkPassword) {
                     return res.json({
                         success: false,
-                        message: "username or password is incorrect"
+                        message: "Username or password is incorrect"
                     })
                 }
 
@@ -61,7 +61,7 @@ const authController = {
             else {
                 return res.json({
                     success: false,
-                    message: "username or password is incorrect"
+                    message: "Username or password is incorrect"
                 })
             }
             
@@ -73,33 +73,46 @@ const authController = {
 
     //POST: /api/auth/register
     authRegister: async (req, res) => {
-        const { username, password } = req.body;
+        const { username, password, name } = req.body;
 
         if (!username) {
             return res.json({
                 success: false,
-                message: "username is obligatory",
+                message: "Username is obligatory",
             })
         };
+        if (!name) {
+            return res.json({
+                success: false,
+                message: "Name is obligatory",
+            })
+        }
         if (!password) {
             return res.json({
                 success: false,
-                message: "password is obligatory",
+                message: "Password is obligatory",
             })
         }
         try {
             // check user
-            const userCheck = await UsersDb.findOne({ username });
-            if (userCheck) {
+            const checkUsername = await UsersDb.findOne({ username });
+            if (checkUsername) {
                 return res.json({
                     success: false,
-                    message: "username existed",
+                    message: "Username existed",
+                })
+            }
+            const checkName = await UsersDb.findOne({ name });
+            if (checkName) {
+                return res.json({
+                    success: false,
+                    message: "Name existed",
                 })
             }
             //hash password
             const hashPassword = await argon2.hash(password);
             //save in db
-            const user = new UsersDb({ username, password: hashPassword });
+            const user = new UsersDb({ username, name, password: hashPassword });
             user.save();
             const userId = user._id;
 

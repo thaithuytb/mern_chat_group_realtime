@@ -12,10 +12,11 @@ const RegisterForm = () => {
   const [inforUser, setInforUser] = useState({
     username: "",
     password: "",
+    name: "",
     comfirmPassword: "",
   });
   const [ dataFromServer,setDataFromServer] = useState(null);
-  const { username, password, comfirmPassword } = inforUser;
+  const { username,name, password, comfirmPassword } = inforUser;
   const { comfirmPasswordCorrect } = checkFormRegister;
   
   const {
@@ -38,7 +39,7 @@ const RegisterForm = () => {
         comfirmPasswordCorrect: true,
       });
       try {
-        const res = await userRegisterForm({ username, password });
+        const res = await userRegisterForm({ username,name, password });
         if (!res.success) {
           setDataFromServer(res.message);
         }
@@ -66,6 +67,18 @@ const RegisterForm = () => {
             placeholder="username"
             name="username"
             value={username}
+            onChange={onChangeValueUser}
+          />
+        </Form.Group>
+        <Form.Group className="formGroup">
+          <label>
+            <FiUser />
+          </label>
+          <input
+            type="text"
+            placeholder="name"
+            name="name"
+            value={name}
             onChange={onChangeValueUser}
           />
         </Form.Group>
