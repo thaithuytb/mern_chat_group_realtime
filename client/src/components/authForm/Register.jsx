@@ -3,7 +3,6 @@ import { Link, Redirect } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { FiLock, FiUser } from "react-icons/fi";
 import { authContext } from "../../contexts/authContext";
-import { checkComfirmPassword } from "./../../utils/comfirmPassword";
 
 import "./style.css";
 const RegisterForm = () => {
@@ -33,7 +32,7 @@ const RegisterForm = () => {
   //funtion submit
   const userSubmitForm = async (e) => {
     e.preventDefault();
-    if (checkComfirmPassword(password, comfirmPassword)) {
+    if ( password === comfirmPassword ) {
       setCheckFormRegister({
         ...checkFormRegister,
         comfirmPasswordCorrect: true,
