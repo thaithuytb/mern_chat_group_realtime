@@ -5,8 +5,8 @@ const postController = {
     getAllMyPosts: async (req, res) => {
         const userId = req.userId;
         try {
-            const post = await Posts.find({userId}).select('-userId -__v');
-            res.json({post});
+            const posts = await Posts.find({userId}).select('-userId -__v');
+            res.json({posts});
         } catch (error) {
             console.log(error.message);
         }
