@@ -1,37 +1,22 @@
-.wp {
+/* .dashboard {
+} */
+.dashboard_header {
+    padding: 10px 40px 10px 60px;
+    list-style: none;
     display: flex;
-    width: 100%;
-    min-height: 100%;
+    justify-content: space-between;
+    background-color: #bcbeb7;
 }
-.sidebarShow {
-    position: relative;
-    height: 100vh;
-    background-color: #585757;
-    width: 60px;
-    transition: all 0.3s linear;
+.dashboard_content {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+   
 }
-.sidebarHidden {
-    position: relative;
-    height: 100vh;
-    background-color: #585757;
-    width: 60px;
-    margin-left: -60px;
-    transition: all 0.3s linear;
-}
-.icon {
-    position: absolute;
-    top: -10px;
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
-    right: -45px;
-    font-size: 45px;
-    color: black;
-}
-.content {
-    width: 100%;
-    text-align: start;
-    padding-left: 60px;
+.dashboard_content h1 {
+    font-size: 60px;
 }
 .logout {
     border: 1px solid black;
