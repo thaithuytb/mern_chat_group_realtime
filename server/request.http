@@ -2,7 +2,7 @@ POST http://localhost:4444/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "thaithuytb",
+    "username": "thai",
     "password": "1234"
 }
 
@@ -11,15 +11,40 @@ POST http://localhost:4444/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "thaithuytb",
-    "name": "thai",
+    "username": "thuy",
+    "name": "thuy",
     "password": "1234"
 }
 ###
 
 GET http://localhost:4444/api/auth
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGM4YzdlMzc1OGFiOTE1YThkZWU5ZGUiLCJpYXQiOjE2MjM4OTkxNDV9.tIj5vw9zOWpOkTpYFJWIpT7DHShsBMUpoh4G1DmPO4w
+Authorization: Bearer .eyJ1c2VySWQiOiI2MGQ4MjE5OTllOWE3MzJhMjAwZGZhZDciLCJpYXQiOjE2MjQ3NzczNTN9.Suimu-esLFttXUoXNP61PM9a1g4AwE_ym5aaiDsDoQ4
 
 ###
-POST http://localhost:4444/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGM4YzdlMzc1OGFiOTE1YThkZWU5ZGUiLCJpYXQiOjE2MjM4OTkxNDV9.tIj5vw9zOWpOkTpYFJWIpT7DHShsBMUpoh4G1DmPO4w
+POST http://localhost:4444/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQ4Mjk1ZmVjMzYxMzBhMThjNGI2MTAiLCJpYXQiOjE2MjQ3NzkxMDN9._f2Lvpme7dPM_QIPzjuRDgnpShpd6uS0jz5cP7BgwDU
+Content-Type: application/json
+
+{
+    "title": "first",
+    "description": "this is first post of Thuy"
+}
+
+###
+GET http://localhost:4444/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQ4Mjk1ZmVjMzYxMzBhMThjNGI2MTAiLCJpYXQiOjE2MjQ3NzkxMDN9._f2Lvpme7dPM_QIPzjuRDgnpShpd6uS0jz5cP7BgwDU
+
+###
+PUT http://localhost:4444/api/posts/60d8298aec36130a18c4b611
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQ4Mjk1ZmVjMzYxMzBhMThjNGI2MTAiLCJpYXQiOjE2MjQ3NzkxMDN9._f2Lvpme7dPM_QIPzjuRDgnpShpd6uS0jz5cP7BgwDU
+Content-Type: application/json
+
+{
+    "title": "put first 2 3",
+    "description": "this is first post of Thuy"
+}
+
+###
+DELETE  http://localhost:4444/api/posts/60d8298aec36130a18c4b611
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQ4Mjk1ZmVjMzYxMzBhMThjNGI2MTAiLCJpYXQiOjE2MjQ3NzkxMDN9._f2Lvpme7dPM_QIPzjuRDgnpShpd6uS0jz5cP7BgwDU
+Content-Type: application/json

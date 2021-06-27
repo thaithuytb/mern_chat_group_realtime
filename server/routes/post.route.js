@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const postController = require('./../controllers/post');
 //import middleware
 const verifyToken = require('../middleware/verifyToken');
 
 
-router.post('/', verifyToken, (req, res) => {
-    const userId = req.userId;
-    res.json({userId});
-})
+router.get('/', verifyToken, postController.getAllMyPosts);
+router.post('/', verifyToken, postController.postMyPost );
+router.put('/:id', verifyToken, postController.putMyPost );
+router.delete('/:id', verifyToken, postController.deleteMyPost );
 
 module.exports = router;
