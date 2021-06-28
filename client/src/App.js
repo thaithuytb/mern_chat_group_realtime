@@ -22,9 +22,9 @@ function App() {
               <Route exact path='/' component={Landing} />
               {/* Protect Rote  */}
               <ProtectRoute path='/dashboard' component={Dashboard} />
-              <ProtectRoute path='/diary' component={Diary} />
               <Route exact path='/login' render={(props) => <AuthForm {...props} component='login' />} />
               <Route exact path='/register' render={(props) => <AuthForm {...props} component='register' />} />
+              <ProtectRoute path='/diary' component={Diary} />
             </Switch>
           </Router>
 

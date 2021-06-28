@@ -1,0 +1,46 @@
+.diary {
+    width: 100%;
+}
+.diary_header {
+    padding-top: 20px;
+    width: 100%;
+}
+.showDiary {
+
+}
+.showDiary_list {
+    padding: 30px 40px 0px 30px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.showDiary_item {
+    box-sizing: border-box;
+    width: 33%;
+    border: 1px solid #f18080;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.showDiary_item div {
+    margin: 0px auto;
+    width: 90%;
+    margin-top: 5px;
+}
+.showDiary_item-title {
+    height: min-content;
+    padding: 4px;
+    border: 1px solid #78e28a;
+}
+.showDiary_item-desc {
+    margin-bottom: 8px !important;
+    border: 1px solid #bfdd12;
+}
+
+.emptyDiary {
+    text-align: center;
+    width: 100%;
+    border: 1px solid blue;
+    background-color: lightblue;
+}

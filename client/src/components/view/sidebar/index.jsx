@@ -6,7 +6,7 @@ import { FcKindle as Diary } from "react-icons/fc";
 import { FcMultipleDevices as Dashboard } from "react-icons/fc";
 
 const SideBar = () => {
-    const [isShow, setIsShow] = useState(true);
+  const [isShow, setIsShow] = useState(true);
   return (
     <div className={isShow ? "sidebarShow" : "sidebarHidden"}>
       <div className="icon-toggle">
@@ -17,15 +17,15 @@ const SideBar = () => {
         )}
       </div>
       <ul className="list-sidebar">
-      <li>
+        <li>
           <Link to="/dashboard">
             <Dashboard />
           </Link>
         </li>
         <li>
-          <Link to="/diary">
+          <a href="/diary">
             <Diary />
-          </Link>
+          </a>
         </li>
       </ul>
     </div>
