@@ -27,7 +27,7 @@ const AddDiary = () => {
     try {
       const res = await postSinglePost({title, description});
       if (res.success) {
-        getAllMyPosts()
+        await getAllMyPosts();
         setShowAddDiary(false);
         setValueDiaryForm({
           title: '',
