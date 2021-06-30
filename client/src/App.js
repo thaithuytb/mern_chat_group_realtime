@@ -4,7 +4,7 @@ import AuthForm from './components/authForm/AuthForm';
 import Landing from './components/authForm/Landing';
 //import protect router
 import Dashboard from './components/dashboard/Dashboard';
-import Diary from './components/diary/Diary';
+import Diary from './components/diaryForm/Diary';
 import ProtectRoute from './components/privateRoute/ProtectRoute';
 //import context
 import AuthContextProvider from './contexts/authContext';
