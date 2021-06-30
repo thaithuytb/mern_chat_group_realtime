@@ -3,6 +3,7 @@ import { Redirect, Route } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 import Loading from "../loading/Loading";
 import Sidebar from "../layout/sidebar";
+import Header from "../layout/header";
 
 import './appMain.css';
 
@@ -22,6 +23,7 @@ const ProtectRoute = ({ component: Component, ...rest }) => {
           <div className="wp">
             <Sidebar />
             <div className="content">
+              <Header user={user} />
               <Component {...props} user={user} />
             </div>
           </div>

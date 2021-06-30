@@ -66,7 +66,7 @@ input {
     padding: 5px 3px;
     width: 100%;
 }
-button {
+.button-auth {
     color: white;
     background: none !important;
     border: 1px solid rgb(9, 236, 103);
@@ -77,7 +77,7 @@ button {
     border-radius: 7px !important;
     transition: all 0.2s linear;
 }
-button:hover {
+.button-auth:hover {
     width: 100%;
 }
 .redirectFrom {

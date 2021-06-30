@@ -111,7 +111,7 @@ const RegisterForm = () => {
         ) : (
           <p style={{ display: "none" }}>Confirmation password is obligatory</p>
         )}
-        <button type="submit">submit</button>
+        <button type="submit" className="button-auth">submit</button>
       </Form>
       <div className="redirectFrom">
         Do you already have an account? <Link to="/login">Login</Link>

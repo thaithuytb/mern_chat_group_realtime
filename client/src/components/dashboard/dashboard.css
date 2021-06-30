@@ -1,13 +1,4 @@
-/* .dashboard {
-} */
-.dashboard_header {
-    padding: 10px 40px 10px 60px;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    background-color: #bcbeb7;
-}
-.dashboard_content {
+.dashboard {
     display: flex;
     text-align: center;
     justify-content: center;
@@ -15,13 +6,6 @@
     flex-direction: column;
    
 }
-.dashboard_content h1 {
+.dashboard h1 {
     font-size: 60px;
-}
-.logout {
-    border: 1px solid black;
-    padding: 5px;
-    width: min-content;
-    border-radius: 4px;
-    cursor: pointer;
 }

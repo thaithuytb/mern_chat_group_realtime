@@ -1,0 +1,16 @@
+/* .dashboard {
+} */
+.header-nav {
+    padding: 10px 40px 10px 60px;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    background-color: #bcbeb7;
+}
+.logout {
+    border: 1px solid black;
+    padding: 5px;
+    width: min-content;
+    border-radius: 4px;
+    cursor: pointer;
+}

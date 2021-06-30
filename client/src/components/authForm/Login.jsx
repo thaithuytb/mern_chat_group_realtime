@@ -66,7 +66,7 @@ const LoginForm = () => {
           value={password}
         />
       </Form.Group>
-      <button type='submit'>Sign in</button>
+      <button type='submit' className="button-auth">Sign in</button>
     </Form>
     <div className='redirectFrom'>Do you already have an account? <Link to='/register'>Register</Link></div>
   </div>

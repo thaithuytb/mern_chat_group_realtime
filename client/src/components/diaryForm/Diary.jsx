@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { postsContext } from "../../contexts/postsContext";
-import Loading from "./../loading/Loading";
+import Loading from "../loading/Loading";
 import ShowDiary from "./ShowDiary";
 import EmptyDiary from "./EmptyDiary";
 import AddDiary from "./AddDiary";
