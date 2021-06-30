@@ -4,11 +4,12 @@
     min-height: 100%;
 }
 .sidebarShow {
-    position: relative;
+    position: fixed;
     height: 100vh;
     background-color: #585757;
     width: 60px;
     transition: all 0.3s linear;
+    z-index: 2;
 }
 .sidebarHidden {
     position: relative;
@@ -16,7 +17,7 @@
     background-color: #585757;
     width: 60px;
     margin-left: -60px;
-    transition: all 0.3s linear;
+    transition: all 0.2s linear;
 }
 .icon-toggle {
     position: absolute;
@@ -53,4 +54,15 @@
     text-decoration: none;
     color: white;
     font-size: 30px;
+}
+.list-sidebar-mock {
+    position: relative;
+    height: 100vh;
+    opacity: 0.6;
+    width: 60px;
+    transition: all 0.2s linear;
+}
+.list-sidebar-mock-none {
+    display: none;
+    transition: all 0.2s linear;
 }
