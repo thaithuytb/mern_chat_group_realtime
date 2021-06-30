@@ -10,6 +10,9 @@ const postsApi = {
     putMyPost: (info) => {
         const { title, description, _id} = info;
         return axios.put(`${REACT_APP_API}/posts/${_id}`, {title, description});
+    },
+    deleteMyPost: (_id) => {
+        return axios.delete(`${REACT_APP_API}/posts/${_id}`);
     }
 }
 

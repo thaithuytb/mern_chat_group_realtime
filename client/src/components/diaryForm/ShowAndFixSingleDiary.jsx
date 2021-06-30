@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
-import { BsFillTrashFill as TrashCanIcon } from "react-icons/bs";
 import { GiCrucifix as FixPostsIcon } from "react-icons/gi";
 import { BiX as IconClose } from "react-icons/bi";
 import { Form } from "react-bootstrap";
+import DeleteDiary from "./DeleteDiary";
 import { postsContext } from "../../contexts/postsContext";
 import "./diary.css";
 
@@ -99,7 +99,7 @@ const ShowAndFixSingleDiary = ({ posts }) => {
             <li className="showDiary_item" key={post._id}>
               <div className="showDiary-icons">
                 <span>
-                  <TrashCanIcon />
+                  <DeleteDiary _id={post._id}/>
                 </span>
                 <span>
                   <FixPostsIcon

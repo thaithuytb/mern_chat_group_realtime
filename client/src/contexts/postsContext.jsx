@@ -45,8 +45,18 @@ const PostsContextProvider = ({ children }) => {
       console.log(error.message);
     }
   }
+  //delete posts
+  const deleteSinglePost = async (_id) => {
+    const { deleteMyPost } = postsApi;
+    try {
+      const response = await deleteMyPost(_id);
+      return response.data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
-  const dataContextPosts = { dataPosts, getAllMyPosts, postSinglePost, putSinglePost };
+  const dataContextPosts = { dataPosts, getAllMyPosts, postSinglePost, putSinglePost, deleteSinglePost};
   return (
     <postsContext.Provider value={dataContextPosts}>
       {children}
