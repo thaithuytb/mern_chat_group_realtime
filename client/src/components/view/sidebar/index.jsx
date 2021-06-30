@@ -23,9 +23,9 @@ const SideBar = () => {
           </Link>
         </li>
         <li>
-          <a href="/diary">
+          <Link to="/diary">
             <Diary />
-          </a>
+          </Link>
         </li>
       </ul>
     </div>
