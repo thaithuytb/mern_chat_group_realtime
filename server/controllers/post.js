@@ -5,8 +5,11 @@ const postController = {
     getAllMyPosts: async (req, res) => {
         const userId = req.userId;
         try {
-            const posts = await Posts.find({userId}).select('-userId -__v');
-            res.json({posts});
+            const posts = await Posts.find({ userId }).select('-userId -__v');
+            res.json({
+                success: true,
+                posts
+            });
         } catch (error) {
             console.log(error.message);
         }
@@ -15,17 +18,18 @@ const postController = {
     postMyPost: async (req, res) => {
         const userId = req.userId;
         const { title, description } = req.body;
-        const newPost = new Posts({title, description, userId});
+        const newPost = new Posts({ title, description, userId });
         try {
             await newPost.save();
             res.json({
+                success: true,
                 title,
                 description,
                 userId,
             })
         } catch (error) {
             console.log(error.message);
-        }       
+        }
     },
     //PUT: /api/post/:id
     putMyPost: async (req, res) => {
@@ -33,10 +37,10 @@ const postController = {
         const _id = req.params.id;
         const { title, description } = req.body;
         try {
-            const post = await Posts.findOne({userId});
+            const post = await Posts.findOne({ userId });
             if (post) {
                 const data = { title, description, userId };
-                const newPost = await Posts.findOneAndUpdate({_id}, data, {
+                const newPost = await Posts.findOneAndUpdate({ _id }, data, {
                     new: true
                 }).select('-__v -userId');
                 res.json({
@@ -58,9 +62,9 @@ const postController = {
         const userId = req.userId;
         const _id = req.params.id;
         try {
-            const post = await Posts.findOne({userId});
+            const post = await Posts.findOne({ userId });
             if (post) {
-                const deletePost = await Posts.findOneAndDelete({_id});
+                const deletePost = await Posts.findOneAndDelete({ _id });
                 res.json({
                     success: true,
                     deletePost
