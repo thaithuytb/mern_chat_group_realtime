@@ -4,7 +4,7 @@ import Loading from "../loading/Loading";
 import ShowDiary from "./ShowDiary";
 import EmptyDiary from "./EmptyDiary";
 import AddDiary from "./AddDiary";
-const Diary = () => {
+const Diary = ({user}) => {
   const {
     dataPosts: { isLoading, posts },
     getAllMyPosts,
@@ -16,7 +16,7 @@ const Diary = () => {
   } else if (posts.length === 0) {
     body = <EmptyDiary />;
   } else {
-    body = <ShowDiary posts={posts} />;
+    body = <ShowDiary posts={posts} user={user}/>;
   }
   return (
     <div className="diary">
