@@ -13,7 +13,7 @@ const AuthContextProvider = ({children}) => {
     })
     // run when start in app, if we had have token => automatic redirect DASHBOARD
     // if mock token or dont have token => automatic redurect LOGIN
-    const checkAndVerifyToken = async () => {
+    const loadUserAndSetHeaders = async () => {
         if(localStorage[LOCAL_STORAGE_TOKEN]) {
             const { verifyTokenAuth } = authApi;
             const token = localStorage[LOCAL_STORAGE_TOKEN];
@@ -35,7 +35,7 @@ const AuthContextProvider = ({children}) => {
         }
     };
     useEffect(() => {
-        checkAndVerifyToken();
+        loadUserAndSetHeaders();
     }, [])
     //login
     const userLoginForm = async (userForm) => {
@@ -49,6 +49,7 @@ const AuthContextProvider = ({children}) => {
             } else {
                 // console.log(response.data);
             }
+            await loadUserAndSetHeaders();
             return response.data;
         } catch (error) {
             console.log(error.message);
@@ -67,6 +68,7 @@ const AuthContextProvider = ({children}) => {
             } else {
                 console.log(response.data);
             }
+            await loadUserAndSetHeaders();
             return response.data;
         } catch (error) {
             console.log(error.message);
@@ -76,7 +78,7 @@ const AuthContextProvider = ({children}) => {
     //logout
     const userLogout = () => {
         localStorage.removeItem(LOCAL_STORAGE_TOKEN);     
-        setAuthState({...authState, isLoading: false, isAuthenticated: false });
+        setAuthState({...authState, isLoading: false, isAuthenticated: false, user: null});
     }
     //logout
     const authData = { userLoginForm, userRegisterForm , userLogout, authState };
