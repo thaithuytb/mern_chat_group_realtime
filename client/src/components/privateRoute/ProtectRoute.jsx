@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
 import { authContext } from "../../contexts/authContext";
 import Loading from "../loading/Loading";
-import Sidebar from "../view/sidebar";
+import Sidebar from "../layout/sidebar";
 
 import './appMain.css';
 
