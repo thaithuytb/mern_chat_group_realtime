@@ -35,8 +35,18 @@ const PostsContextProvider = ({ children }) => {
     }
 
   }
+  // put posts
+  const putSinglePost = async (dataFix) => {
+    const { putMyPost } = postsApi;
+    try {
+      const response = await putMyPost(dataFix);
+      return response.data;
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 
-  const dataContextPosts = { dataPosts, getAllMyPosts, postSinglePost };
+  const dataContextPosts = { dataPosts, getAllMyPosts, postSinglePost, putSinglePost };
   return (
     <postsContext.Provider value={dataContextPosts}>
       {children}

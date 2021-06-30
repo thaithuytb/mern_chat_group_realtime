@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { postsContext } from "../../contexts/postsContext";
 import Loading from "../loading/Loading";
-import ShowDiary from "./ShowDiary";
+import ShowAndFixSingleDiary from "./ShowAndFixSingleDiary";
 import EmptyDiary from "./EmptyDiary";
 import AddDiary from "./AddDiary";
 const Diary = ({user}) => {
@@ -16,7 +16,7 @@ const Diary = ({user}) => {
   } else if (posts.length === 0) {
     body = <EmptyDiary />;
   } else {
-    body = <ShowDiary posts={posts} user={user}/>;
+    body = <ShowAndFixSingleDiary posts={posts} user={user}/>;
   }
   return (
     <div className="diary">
