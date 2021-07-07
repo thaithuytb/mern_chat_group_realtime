@@ -4,6 +4,7 @@ import { BiMenu as IconMenu } from "react-icons/bi";
 import { BiX as IconClose } from "react-icons/bi";
 import { FcKindle as Diary } from "react-icons/fc";
 import { FcMultipleDevices as Dashboard } from "react-icons/fc";
+import { AiFillWechat as Chat } from "react-icons/ai";
 
 const SideBar = () => {
   const [isShow, setIsShow] = useState(true);
@@ -26,6 +27,11 @@ const SideBar = () => {
           <li>
             <Link to="/diary">
               <Diary />
+            </Link>
+          </li>
+          <li>
+            <Link to="/chat">
+              <Chat />
             </Link>
           </li>
         </ul>

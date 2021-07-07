@@ -5,6 +5,7 @@ import Landing from './components/authForm/Landing';
 //import protect router
 import Dashboard from './components/dashboard/Dashboard';
 import Diary from './components/diaryForm/Diary';
+import ChatForm from './components/chatForm/ChatForm';
 import ProtectRoute from './components/privateRoute/ProtectRoute';
 //import context
 import AuthContextProvider from './contexts/authContext';
@@ -25,6 +26,7 @@ function App() {
               <Route exact path='/login' render={(props) => <AuthForm {...props} component='login' />} />
               <Route exact path='/register' render={(props) => <AuthForm {...props} component='register' />} />
               <ProtectRoute path='/diary' component={Diary} />
+              <ProtectRoute path='/chat' component={ChatForm} />
             </Switch>
           </Router>
 
