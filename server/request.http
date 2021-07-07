@@ -1,9 +1,10 @@
+
 POST http://localhost:4444/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "thai",
-    "password": "1234"
+    "username": "thaithuytb",
+    "password": "123456"
 }
 
 ###
@@ -11,9 +12,9 @@ POST http://localhost:4444/api/auth/register
 Content-Type: application/json
 
 {
-    "username": "thuy",
-    "name": "thuy",
-    "password": "1234"
+    "username": "ngoquangthai29112001@gmail.com",
+    "name": "ngoquangthai29112001",
+    "password": "123456"
 }
 ###
 
@@ -21,30 +22,31 @@ GET http://localhost:4444/api/auth
 Authorization: Bearer .eyJ1c2VySWQiOiI2MGQ4MjE5OTllOWE3MzJhMjAwZGZhZDciLCJpYXQiOjE2MjQ3NzczNTN9.Suimu-esLFttXUoXNP61PM9a1g4AwE_ym5aaiDsDoQ4
 
 ###
-POST http://localhost:4444/api/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQ4Mjk1ZmVjMzYxMzBhMThjNGI2MTAiLCJpYXQiOjE2MjQ3NzkxMDN9._f2Lvpme7dPM_QIPzjuRDgnpShpd6uS0jz5cP7BgwDU
+GET http://localhost:4444/api/conversations
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYThjZDMwNWFjNzA4OTg5N2M4ZmEiLCJpYXQiOjE2MjU2NTM3ODd9.eys3nxTVS3QJ36YA8NSqjGB2IcJasR9k7BaCFltmphs
+Content-Type: application/json
+
+###
+POST http://localhost:4444/api/conversations
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGU1ODJhZDJkZjNkNTE5NThjNDdhNjQiLCJpYXQiOjE2MjU2NTM5MzN9.eiEPgxXw383A47gepUg3mq225FFFPV7rAYXt1w9zO3w
 Content-Type: application/json
 
 {
-    "title": "first",
-    "description": "this is first post of Thuy"
+    "sender": "60dca8cd305ac7089897c8fa",
+    "receiver": "60e582ad2df3d51958c47a64",
+    "x": "60e580bdc9abac1b2c6b05b9",
+    "v": "60dc8b0e305ac7089897c8f5"
 }
 
 ###
-GET http://localhost:4444/api/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQ4Mjk1ZmVjMzYxMzBhMThjNGI2MTAiLCJpYXQiOjE2MjQ3NzkxMDN9._f2Lvpme7dPM_QIPzjuRDgnpShpd6uS0jz5cP7BgwDU
+GET http://localhost:4444/api/messages/60e59024bbad7d31840b60cc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYThjZDMwNWFjNzA4OTg5N2M4ZmEiLCJpYXQiOjE2MjU2NTM3ODd9.eys3nxTVS3QJ36YA8NSqjGB2IcJasR9k7BaCFltmphs
 
 ###
-PUT http://localhost:4444/api/posts/60d8298aec36130a18c4b611
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQ4Mjk1ZmVjMzYxMzBhMThjNGI2MTAiLCJpYXQiOjE2MjQ3NzkxMDN9._f2Lvpme7dPM_QIPzjuRDgnpShpd6uS0jz5cP7BgwDU
+POST http://localhost:4444/api/messages/60e59024bbad7d31840b60cc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYThjZDMwNWFjNzA4OTg5N2M4ZmEiLCJpYXQiOjE2MjU2NTM3ODd9.eys3nxTVS3QJ36YA8NSqjGB2IcJasR9k7BaCFltmphs
 Content-Type: application/json
 
 {
-    "title": "put first 2 3",
-    "description": "this is first post of Thuy"
+    "message": "Cậu xinh thế hihi"
 }
-
-###
-DELETE  http://localhost:4444/api/posts/60d8298aec36130a18c4b611
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGQ4Mjk1ZmVjMzYxMzBhMThjNGI2MTAiLCJpYXQiOjE2MjQ3NzkxMDN9._f2Lvpme7dPM_QIPzjuRDgnpShpd6uS0jz5cP7BgwDU
-Content-Type: application/json
