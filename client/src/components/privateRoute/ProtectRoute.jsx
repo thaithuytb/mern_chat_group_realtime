@@ -10,6 +10,7 @@ import './appMain.css';
 const ProtectRoute = ({ component: Component, ...rest }) => {
   const {
     authState: { isLoading, isAuthenticated, user },
+    allUser
   } = useContext(authContext);
   if (isLoading) {
     return <Loading />;
@@ -24,7 +25,7 @@ const ProtectRoute = ({ component: Component, ...rest }) => {
             <Sidebar />
             <div className="content">
               <Header user={user} />
-              <Component {...props} user={user} />
+              <Component {...props} user={user} allUser={allUser}/>
             </div>
           </div>
         ) : (

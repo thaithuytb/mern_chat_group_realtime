@@ -50,3 +50,8 @@ Content-Type: application/json
 {
     "message": "Cậu xinh thế hihi"
 }
+
+###
+GET http://localhost:4444/api/username
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYThjZDMwNWFjNzA4OTg5N2M4ZmEiLCJpYXQiOjE2MjU2NTM3ODd9.eys3nxTVS3QJ36YA8NSqjGB2IcJasR9k7BaCFltmphs
+Content-Type: application/json

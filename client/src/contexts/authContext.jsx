@@ -11,6 +11,7 @@ const AuthContextProvider = ({children}) => {
         isAuthenticated: false,
         user: null
     })
+    const [ allUser, setAllUser ] = useState(null);
     // run when start in app, if we had have token => automatic redirect DASHBOARD
     // if mock token or dont have token => automatic redurect LOGIN
     const loadUserAndSetHeaders = async () => {
@@ -34,9 +35,22 @@ const AuthContextProvider = ({children}) => {
             setAuthState({...authState, isLoading: false });
         }
     };
+    const getAlluserInBd = async () => {
+        const { getAllUser } = authApi;
+        try {
+            const response = await getAllUser();
+            if (response.data.success) {
+                setAllUser(response.data.listUser)
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
     useEffect(() => {
         loadUserAndSetHeaders();
+        getAlluserInBd();
     }, [])
+    // getAllUser
     //login
     const userLoginForm = async (userForm) => {
         const { loginAuth } = authApi;
@@ -81,7 +95,7 @@ const AuthContextProvider = ({children}) => {
         setAuthState({...authState, isLoading: false, isAuthenticated: false, user: null});
     }
     //logout
-    const authData = { userLoginForm, userRegisterForm , userLogout, authState };
+    const authData = { userLoginForm, userRegisterForm , userLogout, authState, allUser};
     return (
         <authContext.Provider value={authData}>
             {children}
