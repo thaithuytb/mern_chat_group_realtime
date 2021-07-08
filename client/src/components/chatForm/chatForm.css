@@ -12,7 +12,7 @@
     flex: 3;
 }
 .chat-message {
-    padding: 10px;
+    padding: 10px 3px 10px 10px;
     flex: 6;
     border-right: 1px solid #999;
     border-left: 1px solid #999;
@@ -79,8 +79,23 @@
 }
 
 .message-content::-webkit-scrollbar {
-    width: 10px;
-    background-color: aqua;
+    width: 7px;
+  }
+  
+  /* Track */
+  .message-content::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  .message-content::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 3px;
+  }
+  
+  /* Handle on hover */
+  .message-content::-webkit-scrollbar-thumb:hover {
+    background: #555; 
   }
 .message-form {  
     max-height: 100px;
@@ -107,6 +122,7 @@
     display: flex;
     justify-content: start;
     flex-direction: column;
+    padding: 0px 10px;
 }
 .message-item {
     display: flex;

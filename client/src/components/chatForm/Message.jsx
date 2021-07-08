@@ -1,14 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useRef, useEffect} from "react";
 import { chatContext } from "../../contexts/chatContext";
 import Loading from "./../loading/Loading";
 
 const Message = ({ user }) => {
   const [ message, setMessage ] = useState('');
+  const scrollRef = useRef();
   const {
     messages: { isLoading, dataMessage },
     postMessageInConversation,
     currentConversationId
   } = useContext(chatContext);
+  useEffect(()=> {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth"});
+  }
+  ,[dataMessage])
+
   if (isLoading) {
     return <Loading />;
   }
@@ -47,6 +53,7 @@ const Message = ({ user }) => {
                     : "message-item"
                 }
                 key={mes._id}
+                ref={scrollRef}
               >
                 <div className="messageImg"></div>
                 <div className="messageText">{mes.message}</div>
