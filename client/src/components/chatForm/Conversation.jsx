@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import { chatContext } from "../../contexts/chatContext";
 import { setShowConversations } from './../../utils/setShowConversations';
 const Conversation = ({ user, allUser, data }) => {
+  const { getAllMessage } = useContext(chatContext);
+  const getMessageInConversation = async (conversationId) => {
+    try {
+      await getAllMessage(conversationId);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
   
-  console.log({user, allUser, data});
   return (
     <>
       {
-        data.map((covercation) => {
-          const { members } = covercation;
-          const myfriends = allUser.reduce((repo, cur) => {
+        data.map((conversation) => {
+          const { members } = conversation;
+          const myfriends = allUser?.reduce((repo, cur) => {
             return (cur._id !== user._id && members.indexOf(cur._id) >= 0)? [...repo, cur.name] : repo;
           },[]);
-          console.log(myfriends)
           return (
-          <div className="conversation-item" key={covercation._id}>
+          <div className="conversation-item" key={conversation._id} onClick={() => getMessageInConversation(conversation._id)}>
           <div className="conversationImg"></div>
           <div className="conversationText">{setShowConversations(myfriends)}</div>
         </div>);
