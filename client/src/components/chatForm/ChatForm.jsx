@@ -1,4 +1,6 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState} from "react";
+import { io } from "socket.io-client";
+import { REACT_APP } from "../../config/constants";
 import Conversation from "./Conversation";
 import Message from "./Message";
 import InfoMessage from "./InfoMessage";
@@ -7,12 +9,16 @@ import { chatContext } from "./../../contexts/chatContext";
 import Loading from "./../loading/Loading";
 
 const ChatForm = ({ user, allUser }) => {
+  const [ socket, setSocket ] = useState(null);
+
   const {
     getAllConversations,
     conversations: { isLoading, dataConversation },
   } = useContext(chatContext);
-
-  useEffect(() => getAllConversations(), []);
+  useEffect(() =>{
+    getAllConversations();
+    setSocket(io("http://localhost:4444", { transports : ["websocket"]}))
+  },[]);
   let conversationBody;
   if (isLoading) {
     return <Loading />;
