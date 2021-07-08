@@ -18,12 +18,28 @@ app.use(express.json());
 route(app);
 
 const PORT = 4444;
+//socket
+let users = [];
+
+const pushUser = (userId, socketId) => {
+    (users.filter((user) => user.userId === userId).length === 0) ? users.push({userId, socketId}): users;
+    return users
+}
+const closeUser = (socketId) => {
+    users = users.filter((user) => user.socketId !== socketId);
+    return users;
+}
 
 io.on('connection', (socket) => {
-    console.log(socket.id);
-    socket.on("hello", (data) => {
-        console.log(data);
+    socket.on("send-user-info", (userId) => {
+        pushUser(userId, socket.id);
+        io.sockets.emit("users-online", users);
+    });
+    socket.on("disconnect", (reason) => {
+        closeUser(socket.id);
+        io.sockets.emit("users-online", users);
     })
+
 })
 
 server.listen(PORT, () => console.log(`server runing at port: ${PORT}`));
