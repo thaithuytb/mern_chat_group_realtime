@@ -1,6 +1,7 @@
 import React, { useContext, useState, useRef, useEffect} from "react";
 import { chatContext } from "../../contexts/chatContext";
 import Loading from "./../loading/Loading";
+import { format } from "timeago.js";
 
 const Message = ({ user }) => {
   const [ message, setMessage ] = useState('');
@@ -8,6 +9,7 @@ const Message = ({ user }) => {
   const {
     messages: { isLoading, dataMessage },
     postMessageInConversation,
+    setMessages,
     currentConversationId
   } = useContext(chatContext);
   useEffect(()=> {
@@ -32,19 +34,23 @@ const Message = ({ user }) => {
     try {
         const data = await postMessageInConversation({message, conversationId});
         if (data.success) {
+          const { newMessage } = data;
           setMessage('');
+          setMessages({
+            isLoading: false,
+            dataMessage: [ ...dataMessage, newMessage]
+          })
         }
     } catch (error) {
       console.log(error.message);
     }
   }
-
   return (
     <>
       <div className="message-content">
         <div className="message-list">
           { dataMessage?.length === 0 && <h4>Hãy bắt đầu cuộc hội thoại với họ.</h4>}
-          {dataMessage?.map((mes) => {
+          { dataMessage?.map((mes) => {
             return (
               <div
                 className={
@@ -56,7 +62,10 @@ const Message = ({ user }) => {
                 ref={scrollRef}
               >
                 <div className="messageImg"></div>
-                <div className="messageText">{mes.message}</div>
+                <div className="messageInfo">
+                  <div className="messageText">{mes.message}</div>
+                  <div className="messageTime">{format(mes.updatedAt, 'en_US')}</div>
+                </div>
               </div>
             );
           })}

@@ -56,7 +56,7 @@ const ChatContextProvider = ({children}) => {
         }
     }
 
-    const dataChat = { conversations,messages ,getAllConversations, getAllMessage, postMessageInConversation, currentConversationId };
+    const dataChat = { conversations,messages , setMessages ,getAllConversations, getAllMessage, postMessageInConversation, currentConversationId };
     return (
         <chatContext.Provider value={dataChat}>
             {children}
