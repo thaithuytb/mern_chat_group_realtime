@@ -64,6 +64,7 @@ const AuthContextProvider = ({children}) => {
                 // console.log(response.data);
             }
             await loadUserAndSetHeaders();
+            await getAlluserInBd();
             return response.data;
         } catch (error) {
             console.log(error.message);
@@ -83,6 +84,7 @@ const AuthContextProvider = ({children}) => {
                 console.log(response.data);
             }
             await loadUserAndSetHeaders();
+            await getAlluserInBd();
             return response.data;
         } catch (error) {
             console.log(error.message);

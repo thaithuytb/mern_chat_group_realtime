@@ -25,7 +25,7 @@ const Conversation = ({ user, allUser, data, listUserIdOnline}) => {
           const myListId = allUser?.reduce((repo, cur) => {
             return (cur._id !== user._id && members.indexOf(cur._id) >= 0)? [...repo, cur._id] : repo;
           },[]);
-          console.log(listUserIdOnline, myListId);
+          // console.log(listUserIdOnline, myListId, myfriends, members, allUser, user);
           return (
           <div className="conversation-item" key={conversation._id} onClick={() => getMessageInConversation(conversation._id)}>
           <div className="conversationImg">
