@@ -104,8 +104,14 @@
     width: 35px;
     border: 1px solid #999;
     border-radius: 50%;
-    background-color: red;
     margin-right: 15px;
+}
+.conversationImg img {
+    height: 35px;
+    width: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid rgb(240, 209, 209);
 }
 .conversationStatus.true {
     background-color: #999;
@@ -210,9 +216,13 @@
 .messageImg {
     width: 40px;
     height: 40px;
-    background-color: aqua;
-    border: 1px solid #999;
     border-radius: 50%;
+}
+.messageImg img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #999;
 }
 
 .message-item.own .messageInfo {

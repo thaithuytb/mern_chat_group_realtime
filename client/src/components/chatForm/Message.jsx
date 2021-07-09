@@ -2,6 +2,7 @@ import React, { useContext, useState, useRef, useEffect} from "react";
 import { chatContext } from "../../contexts/chatContext";
 import Loading from "./../loading/Loading";
 import { format } from "timeago.js";
+import noAvt from "../../assets/noAvt.png";
 
 const Message = ({ user }) => {
   const [ message, setMessage ] = useState('');
@@ -17,12 +18,13 @@ const Message = ({ user }) => {
   }
   ,[dataMessage])
 
+  if (dataMessage === null && isLoading===false) {
+    return <div>Chọn 1 cuộc hội thoại để bắt đầu.</div>;
+  }  
   if (isLoading) {
     return <Loading />;
   }
-  if (dataMessage === null) {
-    return <div>Chọn 1 cuộc hội thoại để bắt đầu.</div>;
-  }  
+  
 
   const changeForm = (e) => {
       setMessage(e.target.value);
@@ -61,7 +63,9 @@ const Message = ({ user }) => {
                 key={mes._id}
                 ref={scrollRef}
               >
-                <div className="messageImg"></div>
+                <div className="messageImg">
+                  <img alt="noAvt" src={noAvt} />
+                </div>
                 <div className="messageInfo">
                   <div className="messageText">{mes.message}</div>
                   <div className="messageTime">{format(mes.updatedAt, 'en_US')}</div>

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { chatContext } from "../../contexts/chatContext";
 import { setShowConversations } from './../../utils/setShowConversations';
 import { checkTwoArr } from "../../utils/checkTwoArr";
+import noAvt from "../../assets/noAvt.png";
 const Conversation = ({ user, allUser, data, listUserIdOnline}) => {
   const { getAllMessage } = useContext(chatContext);
   const getMessageInConversation = async (conversationId) => {
@@ -30,6 +31,7 @@ const Conversation = ({ user, allUser, data, listUserIdOnline}) => {
           <div className="conversation-item" key={conversation._id} onClick={() => getMessageInConversation(conversation._id)}>
           <div className="conversationImg">
             <span className={ checkTwoArr(myListId, listUserIdOnline) ? "conversationStatus" : "conversationStatus true"}/>
+            <img src={noAvt} alt='noAvt'/>
           </div>
           <div className="conversationText">{setShowConversations(myfriends)}</div>
         </div>);
