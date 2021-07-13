@@ -22,13 +22,27 @@ const PORT = 4444;
 let users = [];
 
 const pushUser = (userId, socketId) => {
-    (users.filter((user) => user.userId === userId).length === 0) ? users.push({userId, socketId}): users;
+    (users.filter((user) => user.userId === userId).length === 0) ? users.push({ userId, socketId }) : users;
     return users
 }
 const closeUser = (socketId) => {
     users = users.filter((user) => user.socketId !== socketId);
     return users;
 }
+
+const chatNsp = io.of('/chat-namespace');
+
+
+chatNsp.on('connect', (socket) => {
+    socket.on("join-room", (data) => {
+        socket.join(data);
+    });
+    socket.on("push-message", (data) => {
+        console.log(data.room);
+        io.of('/chat-namespace').to(data.room).emit("get-message", data.message);
+    })
+})
+
 
 io.on('connection', (socket) => {
     socket.on("send-user-info", (userId) => {

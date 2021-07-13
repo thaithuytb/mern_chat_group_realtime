@@ -10,16 +10,17 @@ import Loading from "./../loading/Loading";
 
 const ChatForm = ({ user, allUser }) => {
   const [ listUserIdOnline, setListUserOnline ] = useState([]);
-  const chatSocket = useRef();
+  const userOnlineSocket = useRef();
   const {
     getAllConversations,
     conversations: { isLoading, dataConversation },
   } = useContext(chatContext);
+  
   useEffect(() =>{
     getAllConversations();
-    chatSocket.current = io(REACT_APP, { transports : ["websocket"]});
-    chatSocket.current.emit("send-user-info" , user._id);
-    chatSocket.current.on("users-online", (users) => {
+    userOnlineSocket.current = io(REACT_APP, { transports : ["websocket"]});
+    userOnlineSocket.current.emit("send-user-info" , user._id);
+    userOnlineSocket.current.on("users-online", (users) => {
       // remove userId of myseft...
       const arrIdUsersOnline = users.reduce((repo, cur) => {
         return  (cur.userId === user._id) ? repo :[...repo, cur.userId];

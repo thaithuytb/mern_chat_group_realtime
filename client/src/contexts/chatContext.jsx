@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import chatApi from './../api/chatApi';
 export const chatContext = React.createContext();
 const ChatContextProvider = ({children}) => {
@@ -6,10 +6,7 @@ const ChatContextProvider = ({children}) => {
         isLoading: true,
         dataConversation: null
     });
-    const [ messages ,setMessages ] = useState({
-        isLoading: true,
-        dataMessage: null
-    });
+    const [ messages ,setMessages ] = useState([]);
     const [ currentConversationId , setCurrentConversationId ] = useState(null);
 
     const getAllConversations = async () => {
@@ -33,11 +30,7 @@ const ChatContextProvider = ({children}) => {
         try {
             const response = await getAllMessageInConversation(conversationId);
             if (response.data.success) {
-                setMessages({
-                    ...messages,
-                    isLoading: false,
-                    dataMessage: response.data.messages
-                });
+                setMessages(response.data.messages);
                 setCurrentConversationId(conversationId);
             }
         } catch (error) {

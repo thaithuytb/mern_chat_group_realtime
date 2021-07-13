@@ -3,10 +3,10 @@ import { io } from "socket.io-client";
 import { REACT_APP } from "./../../config/constants";
 import "./dashboard.css";
 const Dashboard = ({ user }) => {
-  const userOnline = useRef();
+  const userOnlineSocket = useRef();
   useEffect(() =>{
-    userOnline.current = io(REACT_APP, { transports : ["websocket"]});
-    userOnline.current.emit("send-user-info" , user._id);
+    userOnlineSocket.current = io(REACT_APP, { transports : ["websocket"]});
+    userOnlineSocket.current.emit("send-user-info" , user._id);
   },[user]);
 
   return (
