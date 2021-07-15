@@ -33,7 +33,6 @@ Content-Type: application/json
 
 {
     "sender": "60dca8cd305ac7089897c8fa",
-    "receiver": "60e582ad2df3d51958c47a64",
     "x": "60e580bdc9abac1b2c6b05b9",
     "v": "60dc8b0e305ac7089897c8f5"
 }

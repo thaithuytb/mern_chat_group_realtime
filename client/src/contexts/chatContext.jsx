@@ -8,6 +8,7 @@ const ChatContextProvider = ({children}) => {
     });
     const [ messages ,setMessages ] = useState([]);
     const [ currentConversationId , setCurrentConversationId ] = useState(null);
+    // const [ delayMessage, setDelayMessage ] = useState(null);
 
     const getAllConversations = async () => {
         const { getAllConversation } = chatApi;

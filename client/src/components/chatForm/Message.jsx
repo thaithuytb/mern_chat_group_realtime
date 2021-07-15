@@ -37,9 +37,11 @@ const Message = ({ user }) => {
 
   useEffect(() => {
     chatSocket.on("get-message", (data) => {
-      setAddMessageFromSoket(data);
+      if (currentConversationId === data.room) {
+        setAddMessageFromSoket(data.message);
+      }
     });
-  },[]);
+  },[currentConversationId]);
 
   useEffect(() => {
     // setMessages(prev => [...prev, addMessageFromSoket]);
@@ -74,7 +76,7 @@ const Message = ({ user }) => {
 
     try {
       // const data = await postMessageInConversation({message, conversationId});
-      await postMessageInConversation({message, conversationId});
+      // await postMessageInConversation({message, conversationId});
       // if (data.success) {
 
       // const { newMessage } = data;

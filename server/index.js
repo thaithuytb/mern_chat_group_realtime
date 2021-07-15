@@ -38,8 +38,7 @@ chatNsp.on('connect', (socket) => {
         socket.join(data);
     });
     socket.on("push-message", (data) => {
-        console.log(data.room);
-        io.of('/chat-namespace').to(data.room).emit("get-message", data.message);
+        io.of('/chat-namespace').to(data.room).emit("get-message", data);
     })
 })
 
