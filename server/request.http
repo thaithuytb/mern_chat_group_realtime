@@ -3,7 +3,7 @@ POST http://localhost:4444/api/auth/login
 Content-Type: application/json
 
 {
-    "username": "thaithuytb",
+    "username": "thaiku77",
     "password": "123456"
 }
 
@@ -28,13 +28,12 @@ Content-Type: application/json
 
 ###
 POST http://localhost:4444/api/conversations
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGU1ODJhZDJkZjNkNTE5NThjNDdhNjQiLCJpYXQiOjE2MjU2NTM5MzN9.eiEPgxXw383A47gepUg3mq225FFFPV7rAYXt1w9zO3w
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGU1ODBiZGM5YWJhYzFiMmM2YjA1YjkiLCJpYXQiOjE2MjY0MzA2OTZ9.ex3MyY6jGTMXNAmMjjAwdUliWzcKGF4ZA66hjI1RI44
 Content-Type: application/json
 
 {
     "sender": "60dca8cd305ac7089897c8fa",
-    "x": "60e580bdc9abac1b2c6b05b9",
-    "v": "60dc8b0e305ac7089897c8f5"
+    "x": "60e580bdc9abac1b2c6b05b9"
 }
 
 ###
@@ -54,3 +53,17 @@ Content-Type: application/json
 GET http://localhost:4444/api/username
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGRjYThjZDMwNWFjNzA4OTg5N2M4ZmEiLCJpYXQiOjE2MjU2NTM3ODd9.eys3nxTVS3QJ36YA8NSqjGB2IcJasR9k7BaCFltmphs
 Content-Type: application/json
+
+###
+GET http://localhost:4444/api/notificationMessage/60f15dc3640e982b34e8f2fb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGU1ODBiZGM5YWJhYzFiMmM2YjA1YjkiLCJpYXQiOjE2MjY0MzA2OTZ9.ex3MyY6jGTMXNAmMjjAwdUliWzcKGF4ZA66hjI1RI44
+
+###
+PUT http://localhost:4444/api/notificationMessage/60f15dc3640e982b34e8f2fb
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGU1ODBiZGM5YWJhYzFiMmM2YjA1YjkiLCJpYXQiOjE2MjY0MzA2OTZ9.ex3MyY6jGTMXNAmMjjAwdUliWzcKGF4ZA66hjI1RI44
+Content-Type: application/json
+
+{
+    "numberOfUserInNotifyMessage": "1",
+    "numberMessageRead": "17"
+}
