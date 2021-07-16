@@ -1,11 +1,27 @@
 const NotificationMessageDb = require('../models/notificationMessage');
 
 const notificationMessageController = {
+    //GET :api/notificationMessage
+    getAllNotificationMessage: async (req, res) => {
+        const { listConversations } = req.body;
+        const data = listConversations.reduce((repo, cur) => {
+            return [...repo, {conversationId: cur}];
+        }, [])
+        try {
+            const notificationMessage = await NotificationMessageDb.find({ $or : data}).select('-__v');
+            res.json({
+                success: true,
+                notificationMessage
+            })
+        } catch (error) {
+            console.log(error.message);
+        }
+    },
     //GET :api/notificationMessage/:conversationId
     getNotifycationMessage: async (req, res) => {
         const { conversationId } = req.params;
         try {
-            notificationMessage = await NotificationMessageDb.findOne({conversationId});
+            const notificationMessage = await NotificationMessageDb.findOne({conversationId});
             res.json({
                 success: true,
                 notificationMessage
