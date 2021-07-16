@@ -37,21 +37,21 @@ const Message = ({ user }) => {
 
   useEffect(() => {
     chatSocket.on("get-message", (data) => {
-      if (currentConversationId === data.room) {
-        setAddMessageFromSoket(data.message);
-      }
-    });
-  },[currentConversationId]);
+        setAddMessageFromSoket({
+          convId: data.room,
+          newMessage: data.message
+        });
+    }); 
+  },[]);
 
   useEffect(() => {
-    // setMessages(prev => [...prev, addMessageFromSoket]);
-    addMessageFromSoket && setMessages([...messages, addMessageFromSoket]);
-      // addMessageFromSoket !== null && dataConversation.members.includes(addMessageFromSoket.senderId) && 
-  }, [addMessageFromSoket]);
-
-  // if (messages?.length === 0) {
-  //   return <div>Chọn 1 cuộc hội thoại để bắt đầu.</div>;
-  // }
+    if (addMessageFromSoket !== null) {
+      const { convId, newMessage } = addMessageFromSoket;
+      if (convId === currentConversationId ) {
+        setMessages([...messages, newMessage]);
+      }
+    }
+  }, [currentConversationId, addMessageFromSoket]);
 
   const changeForm = (e) => {
     setMessage(e.target.value);
@@ -75,17 +75,7 @@ const Message = ({ user }) => {
 
 
     try {
-      // const data = await postMessageInConversation({message, conversationId});
-      // await postMessageInConversation({message, conversationId});
-      // if (data.success) {
-
-      // const { newMessage } = data;
-      // setMessage('');
-      //   setMessages({
-      //   isLoading: false,
-      //   dataMessage: [ ...dataMessage, newMessage]
-      // })
-      // }
+      await postMessageInConversation({message, conversationId});
     } catch (error) {
       console.log(error.message);
     }

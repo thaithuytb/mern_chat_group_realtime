@@ -31,8 +31,8 @@ const ChatContextProvider = ({children}) => {
         try {
             const response = await getAllMessageInConversation(conversationId);
             if (response.data.success) {
-                setMessages(response.data.messages);
                 setCurrentConversationId(conversationId);
+                setMessages(response.data.messages);
             }
         } catch (error) {
             console.log(error.message);
