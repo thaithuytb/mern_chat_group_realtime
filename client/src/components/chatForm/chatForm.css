@@ -132,6 +132,22 @@
     cursor: pointer;
     height: 100%;
     padding: 10px 5px;
+    display: flex;
+    justify-content: space-between;
+}
+.conversationText-notify-none {
+    display: none;
+}
+.conversationText-notify {
+    margin-right: 10px;
+    display: inline-block;
+    background-color: red;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    color: blanchedalmond;
+    text-align: center;
 }
 .conversationText:hover {
     /* border: 1px solid #999; */

@@ -25,11 +25,11 @@ function App() {
               <Switch>
                 <Route exact path='/' component={Landing} />
                 {/* Protect Rote  */}
-                <ProtectRoute path='/dashboard' component={Dashboard} />
+                <ProtectRoute exact path='/chat' component={ChatForm} />
+                <ProtectRoute exact path='/dashboard' component={Dashboard} />
+                <ProtectRoute exact path='/diary' component={Diary} />
                 <Route exact path='/login' render={(props) => <AuthForm {...props} component='login' />} />
                 <Route exact path='/register' render={(props) => <AuthForm {...props} component='register' />} />
-                <ProtectRoute path='/diary' component={Diary} />
-                <ProtectRoute path='/chat' component={ChatForm} />
               </Switch>
             </Router>
 

@@ -1,10 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { postsContext } from "../../contexts/postsContext";
+import { authContext } from './../../contexts/authContext';
 import Loading from "../loading/Loading";
 import ShowAndFixSingleDiary from "./ShowAndFixSingleDiary";
 import EmptyDiary from "./EmptyDiary";
 import AddDiary from "./AddDiary";
-const Diary = ({user}) => {
+const Diary = () => {
+  const { authState: { user} } = useContext(authContext);
   const {
     dataPosts: { isLoading, posts },
     getAllMyPosts,

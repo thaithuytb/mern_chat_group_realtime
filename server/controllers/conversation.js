@@ -33,13 +33,15 @@ const conversationController = {
         const newConversation = new ConversationsDb({ members: data});
         try {
             const newConv = await newConversation.save();
-            const newNotificationMessage = new NotificationMessageDb({ messageRead: dataNotification, conversationId: newConv._id});
-            await newNotificationMessage.save();
-            res.json({
-                success: true,
-                newConversation,
-                newNotificationMessage,
-            })
+            if (newConv) {
+                const newNotificationMessage = new NotificationMessageDb({ messageNotify: dataNotification,conversationId: newConv._id});
+                await newNotificationMessage.save();
+                res.json({
+                    success: true,
+                    newConversation,
+                    newNotificationMessage,
+                })
+            }
         } catch (error) {
             console.log(error.message);
         }

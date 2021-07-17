@@ -1,5 +1,6 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { chatContext } from "../../contexts/chatContext";
+import { authContext } from './../../contexts/authContext';
 import { format } from "timeago.js";
 import noAvt from "../../assets/noAvt.png";
 import { io } from "socket.io-client";
@@ -7,13 +8,12 @@ import { REACT_APP } from "../../config/constants";
 
 let chatSocket;
 
-const Message = ({ user }) => {
+const Message = () => {
+  const { authState: {user}} = useContext(authContext);
   const deSocket = `${REACT_APP}/chat-namespace`;
-
   const [message, setMessage] = useState("");
   const [addMessageFromSoket, setAddMessageFromSoket] = useState(null);
   const scrollRef = useRef();
-  // const chatSocket = useRef();
 
   const {
     messages,

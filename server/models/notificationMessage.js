@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const notificationMessage = new Schema({
-    messageRead: [Number],
+    messageNotify: [Number],
     conversationId: { type: Schema.Types.ObjectId, refs: 'conversations', unique: true }
 },
     { timestamps: true }

@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { authContext } from './../../../contexts/authContext';
 import "./header.css";
 
-const Header = ({user}) => {
-  const { userLogout } = useContext(authContext);
+const Header = () => {
+  const { authState: { user } ,userLogout } = useContext(authContext);
   return (
       <div className="header">
         <ul className="header-nav">  

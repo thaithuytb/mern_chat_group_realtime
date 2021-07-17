@@ -1,43 +1,10 @@
-import React, { useEffect, useContext, useRef, useState} from "react";
-import { io } from "socket.io-client";
-import { REACT_APP } from "../../config/constants";
+import React from "react";
 import Conversation from "./Conversation";
 import Message from "./Message";
 import InfoMessage from "./InfoMessage";
 import "./chatForm.css";
-import { chatContext } from "./../../contexts/chatContext";
-import Loading from "./../loading/Loading";
 
-const ChatForm = ({ user, allUser }) => {
-  const [ listUserIdOnline, setListUserOnline ] = useState([]);
-  const userOnlineSocket = useRef();
-  const {
-    getAllConversations,
-    conversations: { isLoading, dataConversation },
-  } = useContext(chatContext);
-  
-  useEffect(() =>{
-    getAllConversations();
-    userOnlineSocket.current = io(REACT_APP, { transports : ["websocket"]});
-    userOnlineSocket.current.emit("send-user-info" , user._id);
-    userOnlineSocket.current.on("users-online", (users) => {
-      // remove userId of myseft...
-      const arrIdUsersOnline = users.reduce((repo, cur) => {
-        return  (cur.userId === user._id) ? repo :[...repo, cur.userId];
-      }, []);
-      setListUserOnline(arrIdUsersOnline);
-    })
-  },[]);
-  let conversationBody;
-  if (isLoading) {
-    return <Loading />;
-  } else {
-    conversationBody = (
-      <div className="conversation-list">
-        <Conversation user={user} allUser={allUser} data={dataConversation} listUserIdOnline={listUserIdOnline}/>
-      </div>
-    );
-  }
+const ChatForm = () => {
   return (
     <div className="chat">
       <div className="chatwrapper">
@@ -53,10 +20,12 @@ const ChatForm = ({ user, allUser }) => {
             <input placeholder="   Tìm kiếm" type="text" />
             <button disabled>send</button>
           </form>
-          {conversationBody}
+          <div className="conversation-list">
+        <Conversation/>
+      </div>
         </div>
         <div className="chat-message">
-          <Message user={user} />
+          <Message />
         </div>
         
         <div className="chat-infomessage">

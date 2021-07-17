@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext} from "react";
 import chatApi from "./../api/chatApi";
+import { authContext } from './authContext';
 export const chatContext = React.createContext();
 const ChatContextProvider = ({ children }) => {
   const [conversations, setConversations] = useState({
@@ -9,6 +10,8 @@ const ChatContextProvider = ({ children }) => {
   const [messages, setMessages] = useState([]);
   const [currentConversationId, setCurrentConversationId] = useState(null);
   const [dataNotifyMessage, setDataNotifyMessage] = useState(null);
+  const { authState: { user}} = useContext(authContext);
+
   const getAllConversations = async () => {
     const { getAllConversation } = chatApi;
     try {
@@ -24,6 +27,8 @@ const ChatContextProvider = ({ children }) => {
       console.log(error);
     }
   };
+   //getAllConversations
+  useEffect(() => getAllConversations(), [user]);
 
   const getAllMessage = async (conversationId) => {
     const { getAllMessageInConversation } = chatApi;
@@ -60,6 +65,17 @@ const ChatContextProvider = ({ children }) => {
       console.log(error.message);
     }
   };
+    // pull notifi in conversation
+    useEffect(() => {
+      if (conversations.dataConversation) {
+        const getArrmember = (data) => {
+          return data.reduce((repo, cur) => {
+            return [...repo, cur._id];
+          }, []);
+        };
+        getAllNotify(getArrmember(conversations.dataConversation));
+      }
+    }, [conversations.dataConversation]);
 
   const dataChat = {
     conversations,
@@ -70,7 +86,7 @@ const ChatContextProvider = ({ children }) => {
     postMessageInConversation,
     currentConversationId,
     getAllNotify,
-    dataNotifyMessage
+    dataNotifyMessage,
   };
   return (
     <chatContext.Provider value={dataChat}>{children}</chatContext.Provider>

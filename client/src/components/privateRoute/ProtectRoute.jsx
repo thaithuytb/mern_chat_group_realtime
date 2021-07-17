@@ -9,8 +9,7 @@ import './appMain.css';
 
 const ProtectRoute = ({ component: Component, ...rest }) => {
   const {
-    authState: { isLoading, isAuthenticated, user },
-    allUser
+    authState: { isLoading, isAuthenticated },
   } = useContext(authContext);
   if (isLoading) {
     return <Loading />;
@@ -24,8 +23,8 @@ const ProtectRoute = ({ component: Component, ...rest }) => {
           <div className="wp">
             <Sidebar />
             <div className="content">
-              <Header user={user} />
-              <Component {...props} user={user} allUser={allUser}/>
+              <Header />
+              <Component {...props} />
             </div>
           </div>
         ) : (

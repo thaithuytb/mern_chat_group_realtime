@@ -16,12 +16,15 @@ const chatApi = {
     getNotificationMessage: (conversationId) => {
         return axios.get(`${REACT_APP_API}/notificationMessage/${conversationId}`);
     },
-    putNotificationMessage: ({ conversationId, sttUser, numberMessages}) => {
-        const content_type = { numberOfUserInNotifyMessage: sttUser, numberMessageRead: numberMessages };
+    putNotificationMessage: ({ conversationId, sttUser }) => {
+        const content_type = { numberOfUserInNotifyMessage: sttUser };
         return axios.put(`${REACT_APP_API}/notificationMessage/${conversationId}`, content_type);
     },
     getAllNotificationMessage: (listConversationId) => {
         return axios.post(`${REACT_APP_API}/notificationMessage`, { listConversations: listConversationId});
+    },
+    putNewNotify: (conversationId) => {
+        return axios.put(`${REACT_APP_API}/notificationMessage`, {conversationId});
     },
 }
 

@@ -5,6 +5,7 @@ const notificationMessageController = require('../controllers/notificationMessag
 // const UsersDb = require('./../models/users');
 
 route.post('/', verifyToken, notificationMessageController.getAllNotificationMessage);
+route.put('/', verifyToken, notificationMessageController.putNewNotify);
 route.get('/:conversationId', verifyToken, notificationMessageController.getNotifycationMessage);
 route.put('/:conversationId', verifyToken, notificationMessageController.putNotificationMessage);
 

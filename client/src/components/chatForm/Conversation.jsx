@@ -1,11 +1,21 @@
 import React, { useContext, useEffect } from "react";
 import { chatContext } from "../../contexts/chatContext";
+import { authContext } from "./../../contexts/authContext";
 import { setShowConversations } from "./../../utils/setShowConversations";
 import { checkTwoArr } from "../../utils/checkTwoArr";
 import noAvt from "../../assets/noAvt.png";
-const Conversation = ({ user, allUser, data, listUserIdOnline }) => {
-  const { getAllMessage, getAllNotify, dataNotifyMessage } =
-    useContext(chatContext);
+const Conversation = () => {
+  const {
+    authState: { user },
+    listUserIdOnline,
+    allUser,
+  } = useContext(authContext);
+  const {
+    conversations: { dataConversation },
+    getAllMessage,
+    dataNotifyMessage,
+  } = useContext(chatContext);
+ 
 
   const getMessageInConversation = async (conversationId) => {
     try {
@@ -14,33 +24,20 @@ const Conversation = ({ user, allUser, data, listUserIdOnline }) => {
       console.log(error.message);
     }
   };
-  // pull notifi in conversation
-  useEffect(() => {
-    const getArrmember = (data) => {
-      return data.reduce((repo, cur) => {
-        return [...repo, cur._id];
-      }, []);
-    };
-    getAllNotify(getArrmember(data));
-  }, [data]);
-
-  // console.log(dataNotifyMessage);
 
   const findNotifyAndUserInConversation = (conversation) => {
-    // console.log(members.indexOf(user._id));
     const sttUser = conversation.members.indexOf(user._id);
-    return dataNotifyMessage.find((data) => data.conversationId === conversation._id).messageRead[sttUser];
-  }
-
+    return dataNotifyMessage.find((data) => data.conversationId === conversation._id).messageNotify[sttUser];
+  };
   return (
     <>
       {dataNotifyMessage === null ? (
         <></>
       ) : (
-        data.map((conversation) => {
+        dataConversation.map((conversation) => {
           const { members } = conversation;
-          console.log(findNotifyAndUserInConversation(conversation), members);
-          // findNotifyAndUserInConversation(conversation);
+          // số thông báo
+          const notify = findNotifyAndUserInConversation(conversation);
           // get id
           const myfriends = allUser?.reduce((repo, cur) => {
             return cur._id !== user._id && members.indexOf(cur._id) >= 0
@@ -53,7 +50,6 @@ const Conversation = ({ user, allUser, data, listUserIdOnline }) => {
               ? [...repo, cur._id]
               : repo;
           }, []);
-          // console.log(listUserIdOnline, myListId, myfriends, members, allUser, user);
           return (
             <div
               className="conversation-item"
@@ -70,8 +66,9 @@ const Conversation = ({ user, allUser, data, listUserIdOnline }) => {
                 />
                 <img src={noAvt} alt="noAvt" />
               </div>
-              <div className="conversationText">
-                {setShowConversations(myfriends)}
+              <div className="conversationText">    
+                <span className="conversationText-name">{setShowConversations(myfriends)}</span>
+                <span className={notify=== 0 ? "conversationText-notify-none" : "conversationText-notify"}>{notify}</span>
               </div>
             </div>
           );
