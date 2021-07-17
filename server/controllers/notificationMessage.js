@@ -1,7 +1,7 @@
 const NotificationMessageDb = require('../models/notificationMessage');
 
 const notificationMessageController = {
-    //GET :api/notificationMessage
+    //POST :api/notificationMessage
     getAllNotificationMessage: async (req, res) => {
         const { listConversations } = req.body;
         const data = listConversations.reduce((repo, cur) => {

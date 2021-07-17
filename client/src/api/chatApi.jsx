@@ -14,18 +14,16 @@ const chatApi = {
         return axios.post(`${REACT_APP_API}/messages/${conversationId}`, { message});
     }, 
     getNotificationMessage: (conversationId) => {
-        return axios.get(`${REACT_APP_API}/${conversationId}`);
+        return axios.get(`${REACT_APP_API}/notificationMessage/${conversationId}`);
     },
     putNotificationMessage: ({ conversationId, sttUser, numberMessages}) => {
         const content_type = { numberOfUserInNotifyMessage: sttUser, numberMessageRead: numberMessages };
-        return axios.put(`${REACT_APP_API}/${conversationId}`, content_type);
+        return axios.put(`${REACT_APP_API}/notificationMessage/${conversationId}`, content_type);
     },
     getAllNotificationMessage: (listConversationId) => {
-        const data = {
-            listConversations: listConversationId
-        }
-        return axios.get(`${REACT_APP_API}`, data);
+        return axios.post(`${REACT_APP_API}/notificationMessage`, { listConversations: listConversationId});
     },
 }
 
+//su dung post moi dinh dc req.body
 export default chatApi;

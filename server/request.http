@@ -32,8 +32,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGU1O
 Content-Type: application/json
 
 {
-    "sender": "60dca8cd305ac7089897c8fa",
-    "x": "60e580bdc9abac1b2c6b05b9"
+    "x": "60e580bdc9abac1b2c6b05b9",
+    "y": "60dc8b0e305ac7089897c8f5"
 }
 
 ###
@@ -65,5 +65,13 @@ Content-Type: application/json
 
 {
     "numberOfUserInNotifyMessage": "1",
-    "numberMessageRead": "17"
+    "numberMessageRead": "0"
+}
+###
+GET http://localhost:4444/api/notificationMessage
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGU1ODBiZGM5YWJhYzFiMmM2YjA1YjkiLCJpYXQiOjE2MjY0MzA2OTZ9.ex3MyY6jGTMXNAmMjjAwdUliWzcKGF4ZA66hjI1RI44
+Content-Type: application/json
+
+{
+    "listConversations": ["60f15dc3640e982b34e8f2fb", "60f1bb38fd1ea93204ed440c"]
 }

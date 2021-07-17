@@ -4,7 +4,7 @@ const verifyToken = require('../middleware/verifyToken');
 const notificationMessageController = require('../controllers/notificationMessage');
 // const UsersDb = require('./../models/users');
 
-route.get('/', verifyToken, notificationMessageController.getAllNotificationMessage);
+route.post('/', verifyToken, notificationMessageController.getAllNotificationMessage);
 route.get('/:conversationId', verifyToken, notificationMessageController.getNotifycationMessage);
 route.put('/:conversationId', verifyToken, notificationMessageController.putNotificationMessage);
 
