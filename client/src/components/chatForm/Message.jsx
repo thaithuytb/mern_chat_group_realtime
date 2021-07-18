@@ -53,7 +53,7 @@ const Message = () => {
         setAddMessageFromSoket(null);
       }
     }
-  }, [currentConversationId, addMessageFromSoket]);
+  }, [addMessageFromSoket]);
 
   const changeForm = (e) => {
     setMessage(e.target.value);
