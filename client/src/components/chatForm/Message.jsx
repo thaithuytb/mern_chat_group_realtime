@@ -49,6 +49,8 @@ const Message = () => {
       const { convId, newMessage } = addMessageFromSoket;
       if (convId === currentConversationId ) {
         setMessages([...messages, newMessage]);
+      } else {
+        setAddMessageFromSoket(null);
       }
     }
   }, [currentConversationId, addMessageFromSoket]);
