@@ -28,9 +28,9 @@ const ChatForm = () => {
           <Message />
         </div>
         
-        <div className="chat-infomessage">
+        {/* <div className="chat-infomessage">
           <InfoMessage />
-        </div>
+        </div> */}
       </div>
     </div>
   );

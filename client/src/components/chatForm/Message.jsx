@@ -5,8 +5,20 @@ import { format } from "timeago.js";
 import noAvt from "../../assets/noAvt.png";
 import { io } from "socket.io-client";
 import { REACT_APP } from "../../config/constants";
+import { getArrIdMembers } from "../../utils/getArrIdMember";
+
 
 let chatSocket;
+const addOneNotify = (data) => {
+  return data.reduce((repo, cur) => {
+    return [...repo, ++cur];
+  }, [])
+}
+const addOneNotifyRead = (data) => {
+  return data.reduce((repo, cur) => {
+    return [...repo, 0];
+  }, [])
+}
 
 const Message = () => {
   const { authState: {user}} = useContext(authContext);
@@ -21,6 +33,11 @@ const Message = () => {
     setMessages,
     currentConversationId,
     conversations: { dataConversation },
+    notifyHasNewMessage,
+    getAllNotify,
+    sendSeenMessage,
+    setDataNotifyMessage,
+    dataNotifyMessage,
   } = useContext(chatContext);
 
   useEffect(() => {
@@ -49,11 +66,30 @@ const Message = () => {
       const { convId, newMessage } = addMessageFromSoket;
       if (convId === currentConversationId ) {
         setMessages([...messages, newMessage]);
+        const data = dataNotifyMessage.reduce((repo, cur) => {
+          if ( cur.conversationId === convId) return [...repo, { ...cur, messageNotify: addOneNotifyRead(cur.messageNotify)}];
+          return [...repo, cur];
+        }, []);
+        setDataNotifyMessage(data);
+
+         // sttUsers
+         const conversationCurrent = dataConversation.find((data) => data._id === currentConversationId);
+         const sttUser = conversationCurrent.members.indexOf(user._id);
+         (async ({conversationId, sttUser}) => {
+           await sendSeenMessage({conversationId, sttUser});
+        })({conversationId: currentConversationId, sttUser});
+         setAddMessageFromSoket(null);
+
       } else {
+        const data = dataNotifyMessage.reduce((repo, cur) => {
+          if ( cur.conversationId === convId) return [...repo, { ...cur, messageNotify: addOneNotify(cur.messageNotify)}];
+          return [...repo, cur];
+        }, []);
+        setDataNotifyMessage(data);
         setAddMessageFromSoket(null);
       }
     }
-  }, [addMessageFromSoket]);
+  }, [addMessageFromSoket, currentConversationId]);
 
   const changeForm = (e) => {
     setMessage(e.target.value);
@@ -77,7 +113,16 @@ const Message = () => {
 
 
     try {
-      await postMessageInConversation({message, conversationId});
+      const res = await postMessageInConversation({message, conversationId});
+      if (res.success) {
+        const dataReturn = await notifyHasNewMessage(conversationId);
+        if (dataReturn) {
+          // sttUsers
+          const conversationCurrent = dataConversation.find((data) => data._id === currentConversationId);
+          const sttUser = conversationCurrent.members.indexOf(user._id);
+          await sendSeenMessage({conversationId, sttUser});
+        }
+      }
     } catch (error) {
       console.log(error.message);
     }
