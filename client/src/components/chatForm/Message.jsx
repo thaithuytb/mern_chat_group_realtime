@@ -1,27 +1,27 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { chatContext } from "../../contexts/chatContext";
-import { authContext } from './../../contexts/authContext';
+import { authContext } from "./../../contexts/authContext";
 import { format } from "timeago.js";
 import noAvt from "../../assets/noAvt.png";
 import { io } from "socket.io-client";
 import { REACT_APP } from "../../config/constants";
-import { getArrIdMembers } from "../../utils/getArrIdMember";
-
 
 let chatSocket;
 const addOneNotify = (data) => {
   return data.reduce((repo, cur) => {
     return [...repo, ++cur];
-  }, [])
-}
+  }, []);
+};
 const addOneNotifyRead = (data) => {
   return data.reduce((repo, cur) => {
     return [...repo, 0];
-  }, [])
-}
+  }, []);
+};
 
 const Message = () => {
-  const { authState: {user}} = useContext(authContext);
+  const {
+    authState: { user },
+  } = useContext(authContext);
   const deSocket = `${REACT_APP}/chat-namespace`;
   const [message, setMessage] = useState("");
   const [addMessageFromSoket, setAddMessageFromSoket] = useState(null);
@@ -34,7 +34,6 @@ const Message = () => {
     currentConversationId,
     conversations: { dataConversation },
     notifyHasNewMessage,
-    getAllNotify,
     sendSeenMessage,
     setDataNotifyMessage,
     dataNotifyMessage,
@@ -43,9 +42,9 @@ const Message = () => {
   useEffect(() => {
     chatSocket = io(deSocket, { transports: ["websocket"] });
     dataConversation &&
-    dataConversation.forEach((con) => {
-      chatSocket.emit("join-room", con._id);
-    });
+      dataConversation.forEach((con) => {
+        chatSocket.emit("join-room", con._id);
+      });
   }, [deSocket, dataConversation]);
 
   useEffect(() => {
@@ -54,41 +53,54 @@ const Message = () => {
 
   useEffect(() => {
     chatSocket.on("get-message", (data) => {
-        setAddMessageFromSoket({
-          convId: data.room,
-          newMessage: data.message
-        });
-    }); 
-  },[]);
+      setAddMessageFromSoket({
+        convId: data.room,
+        newMessage: data.message,
+      });
+    });
+  }, []);
 
   useEffect(() => {
+    let runReturn = false;
     if (addMessageFromSoket !== null) {
       const { convId, newMessage } = addMessageFromSoket;
-      if (convId === currentConversationId ) {
+      let data;
+      if (convId === currentConversationId) {
+        runReturn = true;
         setMessages([...messages, newMessage]);
-        const data = dataNotifyMessage.reduce((repo, cur) => {
-          if ( cur.conversationId === convId) return [...repo, { ...cur, messageNotify: addOneNotifyRead(cur.messageNotify)}];
+        data = dataNotifyMessage.reduce((repo, cur) => {
+          if (cur.conversationId === convId)
+            return [
+              ...repo,
+              { ...cur, messageNotify: addOneNotifyRead(cur.messageNotify) },
+            ];
           return [...repo, cur];
         }, []);
-        setDataNotifyMessage(data);
-
-         // sttUsers
-         const conversationCurrent = dataConversation.find((data) => data._id === currentConversationId);
-         const sttUser = conversationCurrent.members.indexOf(user._id);
-         (async ({conversationId, sttUser}) => {
-           await sendSeenMessage({conversationId, sttUser});
-        })({conversationId: currentConversationId, sttUser});
-         setAddMessageFromSoket(null);
-
       } else {
-        const data = dataNotifyMessage.reduce((repo, cur) => {
-          if ( cur.conversationId === convId) return [...repo, { ...cur, messageNotify: addOneNotify(cur.messageNotify)}];
+        data = dataNotifyMessage.reduce((repo, cur) => {
+          if (cur.conversationId === convId)
+            return [
+              ...repo,
+              { ...cur, messageNotify: addOneNotify(cur.messageNotify) },
+            ];
           return [...repo, cur];
         }, []);
-        setDataNotifyMessage(data);
-        setAddMessageFromSoket(null);
       }
+      setDataNotifyMessage(data);
+      setAddMessageFromSoket(null);
     }
+    return () => {
+      if (runReturn) {
+        // sttUsers
+        const conversationCurrent = dataConversation.find(
+          (data) => data._id === currentConversationId
+        );
+        const sttUser = conversationCurrent.members.indexOf(user._id);
+        (async ({ conversationId, sttUser }) => {
+          await sendSeenMessage({ conversationId, sttUser });
+        })({ conversationId: currentConversationId, sttUser });
+      }
+    };
   }, [addMessageFromSoket, currentConversationId]);
 
   const changeForm = (e) => {
@@ -111,17 +123,10 @@ const Message = () => {
     });
     setMessage("");
 
-
     try {
-      const res = await postMessageInConversation({message, conversationId});
+      const res = await postMessageInConversation({ message, conversationId });
       if (res.success) {
-        const dataReturn = await notifyHasNewMessage(conversationId);
-        if (dataReturn) {
-          // sttUsers
-          const conversationCurrent = dataConversation.find((data) => data._id === currentConversationId);
-          const sttUser = conversationCurrent.members.indexOf(user._id);
-          await sendSeenMessage({conversationId, sttUser});
-        }
+        await notifyHasNewMessage(conversationId);
       }
     } catch (error) {
       console.log(error.message);
@@ -134,29 +139,30 @@ const Message = () => {
           {messages?.length === 0 && (
             <h4>Hãy bắt đầu cuộc hội thoại với họ.</h4>
           )}
-          {messages?.length!==0 && messages?.map((mes) => {
-            return (
-              <div
-                className={
-                  mes.senderId === user._id
-                    ? "message-item own"
-                    : "message-item"
-                }
-                key={mes._id}
-                ref={scrollRef}
-              >
-                <div className="messageImg">
-                  <img alt="noAvt" src={noAvt} />
-                </div>
-                <div className="messageInfo">
-                  <div className="messageText">{mes.message}</div>
-                  <div className="messageTime">
-                    {format(mes.updatedAt, "en_US")}
+          {messages?.length !== 0 &&
+            messages?.map((mes) => {
+              return (
+                <div
+                  className={
+                    mes.senderId === user._id
+                      ? "message-item own"
+                      : "message-item"
+                  }
+                  key={mes._id}
+                  ref={scrollRef}
+                >
+                  <div className="messageImg">
+                    <img alt="noAvt" src={noAvt} />
+                  </div>
+                  <div className="messageInfo">
+                    <div className="messageText">{mes.message}</div>
+                    <div className="messageTime">
+                      {format(mes.updatedAt, "en_US")}
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
       <form className="message-form" onSubmit={submitForm}>
