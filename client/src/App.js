@@ -11,11 +11,13 @@ import ProtectRoute from './components/privateRoute/ProtectRoute';
 import AuthContextProvider from './contexts/authContext';
 import PostsContextProvider from './contexts/postsContext';
 import ChatContextProvider from './contexts/chatContext';
+import DisplayContextProvider from './contexts/displayContext';
 
 import './App.css';
 function App() {
   return (
     <AuthContextProvider>
+      <DisplayContextProvider>
       <PostsContextProvider>
         <ChatContextProvider>
 
@@ -36,6 +38,7 @@ function App() {
           </div>
         </ChatContextProvider>
       </PostsContextProvider>
+      </DisplayContextProvider>
     </AuthContextProvider>
 
   );

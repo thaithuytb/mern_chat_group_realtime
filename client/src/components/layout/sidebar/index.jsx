@@ -1,16 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BiMenu as IconMenu } from "react-icons/bi";
 import { BiX as IconClose } from "react-icons/bi";
 import { FcKindle as Diary } from "react-icons/fc";
 import { FcMultipleDevices as Dashboard } from "react-icons/fc";
 import { AiFillWechat as Chat } from "react-icons/ai";
+import { displayContext } from './../../../contexts/displayContext';
 
 const SideBar = () => {
   const [isShow, setIsShow] = useState(true);
+  const { setIsShowChangeInfo } = useContext(displayContext);
   return (
     <>
-      <div className={isShow ? "sidebarShow" : "sidebarHidden"}>
+      <div className={isShow ? "sidebarShow" : "sidebarHidden"} onClick={() => setIsShowChangeInfo(false)}>
         <div className="icon-toggle">
           {isShow ? (
             <IconClose onClick={() => setIsShow(!isShow)} />

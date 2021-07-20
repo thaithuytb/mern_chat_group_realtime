@@ -1,16 +1,203 @@
 /* .dashboard {
 } */
 .header-nav {
-    padding: 10px 40px 10px 60px;
+    padding: 10px 20px 10px 60px;
     list-style: none;
     display: flex;
     justify-content: space-between;
     background-color: #bcbeb7;
+    height: 60px;
 }
-.logout {
-    border: 1px solid black;
-    padding: 5px;
-    width: min-content;
-    border-radius: 4px;
+.header-nav li:last-child {
+    position: relative;
+    border: 1px solid #999;
+    background-color: black;
+    color: white;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    z-index: 20;
+}
+.header-nav-force {
+    background-color: yellowgreen !important;
+    color: black !important;
+}
+.feature-change {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    z-index: 20;
+    height: min-content;
+    border: 1px solid #999;
+    background-color: rgb(51, 48, 48);
+    padding: 10px 15px;
+    border-radius: 7px;
+    width: max-content;
+}
+.feature-change.none {
+    display: none;
+}
+.feature-change-info {
+    display: flex;
+    height: min-content;
+    align-items: center;
+    padding: 10px 7px; 
+    border-bottom: 1px solid whitesmoke;
+    transition: all 0.2s linear;
     cursor: pointer;
+}
+.feature-change-info:hover {
+    background-color: rgb(100, 97, 97);
+    border-radius: 4px;
+}
+.feature-change-info img {
+    display: block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.feature-change-info-name {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 20px;
+    height: 30px;
+    line-height: 20px;
+}
+.feature-change-info-title {
+    margin: 0;
+    font-size: 15px;
+    padding: 0;
+    color: rgb(119, 114, 114);
+    height: 15px;
+    line-height: 0px;
+}
+.feature-change-warning {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px; 
+    border-bottom: 1px solid whitesmoke;
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+.feature-change-warning:hover {
+    background-color: rgb(100, 97, 97);
+    border-radius: 4px;
+}
+.feature-change-warning-icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    border: 1px solid white;
+    margin-right: 20px;
+}
+.feature-change-warning-text p:first-child {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 18px;
+    line-height: 15px;
+}
+.feature-change-warning-text p:last-child {
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+    color: rgb(119, 116, 116);
+    line-height: 22px;
+}
+.feature-change-setting {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px; 
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+.feature-change-setting:hover {
+    background-color: rgb(100, 97, 97);
+    border-radius: 4px;
+}
+.feature-change-setiing-icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 1px solid white;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+.feature-change-setting-text{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 18px;
+}
+.feature-change-screen {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px; 
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+.feature-change-screen:hover {
+    background-color: rgb(100, 97, 97);
+    border-radius: 4px;
+}
+.feature-change-screen-icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 1px solid white;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+.feature-change-screen-text{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 18px;
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px; 
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+.logout:hover {
+    background-color: rgb(100, 97, 97);
+    border-radius: 4px;
+}
+.logout-icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 1px solid white;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+.logout-text{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 18px;
+}
+.feature-change-end {
+    border-top: 1px solid whitesmoke;
+    padding: 20px;
+    color: white;
 }

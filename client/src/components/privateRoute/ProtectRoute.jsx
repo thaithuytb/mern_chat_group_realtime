@@ -5,7 +5,7 @@ import Loading from "../loading/Loading";
 import Sidebar from "../layout/sidebar";
 import Header from "../layout/header";
 
-import './appMain.css';
+import "./appMain.css";
 
 const ProtectRoute = ({ component: Component, ...rest }) => {
   const {
@@ -24,7 +24,9 @@ const ProtectRoute = ({ component: Component, ...rest }) => {
             <Sidebar />
             <div className="content">
               <Header />
-              <Component {...props} />
+              <Component
+                {...props}
+              />
             </div>
           </div>
         ) : (
