@@ -126,7 +126,15 @@ const Message = () => {
     try {
       const res = await postMessageInConversation({ message, conversationId });
       if (res.success) {
-        await notifyHasNewMessage(conversationId);
+        const dataReturn = await notifyHasNewMessage(conversationId);
+        if (dataReturn) {
+           // sttUsers
+          const conversationCurrent = dataConversation.find(
+            (data) => data._id === currentConversationId
+          );
+          const sttUser = conversationCurrent.members.indexOf(user._id);
+          await sendSeenMessage({ conversationId, sttUser });
+        }
       }
     } catch (error) {
       console.log(error.message);
