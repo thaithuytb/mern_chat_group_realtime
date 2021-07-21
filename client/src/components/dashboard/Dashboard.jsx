@@ -1,5 +1,6 @@
 import React, { useEffect, useContext, useRef, useState } from "react";
 import { authContext } from "./../../contexts/authContext";
+import { displayContext } from "./../../contexts/displayContext";
 import { io } from "socket.io-client";
 import { REACT_APP } from "./../../config/constants";
 import videoBackground from "./../../assets/videoBackground.mp4";
@@ -8,6 +9,8 @@ let userOnlineSocket;
 const Dashboard = () => {
   const [isShowVideo, setIsShowVideo] = useState(true);
   const timeoutRef = useRef(null);
+  const { setIsShowChangeInfo, showDetail, setShowDetail } =
+    useContext(displayContext);
   const {
     authState: { user },
     setListUserOnline,
@@ -28,13 +31,19 @@ const Dashboard = () => {
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
       setIsShowVideo(false);
-    }, 7000);
+    }, 7500);
     return () => {
       clearTimeout(timeoutRef.current);
     };
   }, []);
   return (
-    <div className="dashboard">
+    <div
+      className="dashboard"
+      onClick={() => {
+        setIsShowChangeInfo(false);
+        showDetail !== 0 && setShowDetail(0);
+      }}
+    >
       {isShowVideo ? (
         <>
           <video src={videoBackground} muted="" autoPlay="true" />

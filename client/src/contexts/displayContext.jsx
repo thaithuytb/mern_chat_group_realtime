@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export const displayContext = React.createContext();
 
 const DisplayContextProvider = ({children}) => {
+    const [showDetail, setShowDetail] = useState(0);
     const [ theme, setTheme ] = useState({
         isDark: true,
         dark: {
@@ -10,6 +11,7 @@ const DisplayContextProvider = ({children}) => {
                 background: "#242526",
                 color: "#b0b3b8",
                 borderBottom: "1px solid #393a3b",
+                backgroundIconNav: "#3a3b3c",
             },
             sidebar: {
                 background: "#242526",
@@ -38,7 +40,7 @@ const DisplayContextProvider = ({children}) => {
     })
     const [ isShowChangeInfo, setIsShowChangeInfo ] = useState(false);
 
-    const data = {isShowChangeInfo, setIsShowChangeInfo, theme, setTheme };
+    const data = {isShowChangeInfo, setIsShowChangeInfo, theme, setTheme, showDetail, setShowDetail};
     return (
         <displayContext.Provider value={data}>
             {children}

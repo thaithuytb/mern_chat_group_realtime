@@ -39,6 +39,7 @@
     height: 120%;
     background: linear-gradient(90deg, transparent 0%, #18191a 5%, #18191a 100%); 
     animation: animationBackground 6s linear 1.5s forwards;
+    will-change: left;
 }
 video {
     position: absolute;

@@ -10,11 +10,14 @@ import "./sidebar.css";
 
 const SideBar = () => {
   const [isShow, setIsShow] = useState(true);
-  const { setIsShowChangeInfo, theme } = useContext(displayContext);
+  const { setIsShowChangeInfo, theme, setShowDetail, showDetail} = useContext(displayContext);
   const style = theme.isDark ? theme.dark.sidebar : theme.light.sidebar;
   return (
     <>
-      <div style={style} className={isShow ? "sidebarShow" : "sidebarHidden"} onClick={() => setIsShowChangeInfo(false)}>
+      <div style={style} className={isShow ? "sidebarShow" : "sidebarHidden"} onClick={() => {
+        setIsShowChangeInfo(false);
+        showDetail !== 0 && setShowDetail(0);
+      }}>
         <div className="icon-toggle">
           {isShow ? (
             <IconClose onClick={() => setIsShow(!isShow)} />
