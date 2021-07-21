@@ -18,9 +18,10 @@ const Header = () => {
     authState: { user },
     userLogout,
   } = useContext(authContext);
-  const { isShowChangeInfo, setIsShowChangeInfo } = useContext(displayContext);
+  const { isShowChangeInfo, setIsShowChangeInfo, theme, setTheme } = useContext(displayContext);
+  const style = theme.isDark ? theme.dark.header : theme.light.header;
   return (
-    <div className="header">
+    <div className="header" style={style}>
       <ul className="header-nav">
         <li>Xin chào: {user.name}</li>
         <li

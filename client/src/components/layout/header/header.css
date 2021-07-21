@@ -1,18 +1,26 @@
-/* .dashboard {
-} */
+.header {
+    height: 60px;
+    box-sizing: border-box;
+}
 .header-nav {
     padding: 10px 20px 10px 60px;
     list-style: none;
     display: flex;
     justify-content: space-between;
-    background-color: #bcbeb7;
-    height: 60px;
+    align-items: center;  
+}
+ul.header-nav {
+    margin-bottom: 0;
+}
+.header-nav li:first-child {
+    color: inherit;
+    font-size: 18px;
 }
 .header-nav li:last-child {
     position: relative;
     border: 1px solid #999;
     background-color: black;
-    color: white;
+    color: inherit;
     width: 40px;
     height: 40px;
     line-height: 40px;

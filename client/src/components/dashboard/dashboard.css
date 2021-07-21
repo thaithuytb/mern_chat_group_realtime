@@ -1,11 +1,70 @@
 .dashboard {
+    position: relative;
     display: flex;
     text-align: center;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-   
+    height: calc(100vh - 60px);
 }
-.dashboard h1 {
-    font-size: 60px;
+.dashboard-welcome {
+    position: relative;
+    font-size: 80px;
+    text-shadow: 2px 2px 5px rgb(145, 143, 143), -2px 2px 5px rgb(248, 241, 228), 3px -3px 5px rgb(248, 241, 228), -4px -4px 5px rgb(248, 241, 228),  -5px -5px 6px rgb(248, 241, 228);
+    font-family: sans-serif;
+    padding: 0px 10px;
+    overflow: hidden;
+    font-weight: 500;
+    letter-spacing: 2px;
 }
+.dashboard-welcome-span {
+    font-size: 100px;
+}
+.dashboard-welcome-after {
+    position: relative;
+    font-size: 70px;
+    text-shadow: 2px 2px 5px rgb(145, 143, 143), -2px 2px 5px rgb(248, 241, 228), 3px -3px 5px rgb(248, 241, 228), -4px -4px 5px rgb(248, 241, 228),  -5px -5px 6px rgb(248, 241, 228);
+    font-family: sans-serif;
+    padding: 0px 10px;
+    overflow: hidden;
+    font-weight: 500;
+}
+.dashboard-welcome::before {
+    position: absolute;
+    display: block;
+    content: '';
+    left: 120%;
+    top: -10%;
+    width: 120%;
+    height: 120%;
+    background: linear-gradient(90deg, transparent 0%, #18191a 5%, #18191a 100%); 
+    animation: animationBackground 6s linear 1.5s forwards;
+}
+video {
+    position: absolute;
+    left: 0;
+    top: -20px;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    mix-blend-mode: screen;
+    z-index: 2;
+}
+@keyframes animationBackground {
+    from {
+        left: 120%;
+    }
+    to {
+        left: -20%;
+    }
+}
+.dashboard h1 span {
+    color: rgb(238, 157, 157);
+    text-shadow: 2px 2px 5px rgb(145, 143, 143), -2px 2px 5px rgb(248, 241, 228), 3px -3px 5px rgb(248, 241, 228), -4px -4px 5px rgb(248, 241, 228),  -5px -5px 6px rgb(248, 241, 228);
+}
+.dashboard h2 {
+    font-family: 'Shadows Into Light';
+    font-size: 55px;
+    text-shadow: 1px 1px 10px white;
+}   

@@ -1,27 +1,57 @@
-import React, { useEffect, useContext } from "react";
-import { authContext } from './../../contexts/authContext';
+import React, { useEffect, useContext, useRef, useState } from "react";
+import { authContext } from "./../../contexts/authContext";
 import { io } from "socket.io-client";
 import { REACT_APP } from "./../../config/constants";
+import videoBackground from "./../../assets/videoBackground.mp4";
 import "./dashboard.css";
 let userOnlineSocket;
 const Dashboard = () => {
-  const { authState: {user} ,setListUserOnline} = useContext(authContext);
-  useEffect(() =>{
+  const [isShowVideo, setIsShowVideo] = useState(true);
+  const timeoutRef = useRef(null);
+  const {
+    authState: { user },
+    setListUserOnline,
+  } = useContext(authContext);
+  useEffect(() => {
     if (user) {
-      userOnlineSocket= io(REACT_APP, { transports : ["websocket"]});
-      userOnlineSocket.emit("send-user-info" , user._id);
+      userOnlineSocket = io(REACT_APP, { transports: ["websocket"] });
+      userOnlineSocket.emit("send-user-info", user._id);
       userOnlineSocket.on("users-online", (users) => {
         // remove userId of myseft...
         const arrIdUsersOnline = users.reduce((repo, cur) => {
-          return  (cur.userId === user._id) ? repo :[...repo, cur.userId];
+          return cur.userId === user._id ? repo : [...repo, cur.userId];
         }, []);
         setListUserOnline(arrIdUsersOnline);
-      })
+      });
     }
-  },[]);
+  }, []);
+  useEffect(() => {
+    timeoutRef.current = setTimeout(() => {
+      setIsShowVideo(false);
+    }, 7000);
+    return () => {
+      clearTimeout(timeoutRef.current);
+    };
+  }, []);
   return (
     <div className="dashboard">
-      <h1>WELCOME TO MY APP</h1>
+      {isShowVideo ? (
+        <>
+          <video src={videoBackground} muted="" autoPlay="true" />
+          <h1 className="dashboard-welcome">
+            <span className="dashboard-welcome-span">W</span>ELCO
+            <span>ME T</span>O MY APP
+          </h1>
+        </>
+      ) : (
+        <>
+          <h1 className="dashboard-welcome-after">
+            <span className="dashboard-welcome-span">W</span>ELCO
+            <span>ME T</span>O MY APP
+          </h1>
+          <h2>NGÔ QUANG THÁI</h2>
+        </>
+      )}
     </div>
   );
 };

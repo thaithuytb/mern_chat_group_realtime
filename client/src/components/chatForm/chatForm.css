@@ -1,6 +1,7 @@
 .chat {
     width: 100%;
-    height: calc(100vh - 76px);
+    height: calc(100vh - 60px);
+    background: inherit;
 }
 .chatwrapper {
     display: flex;
@@ -60,7 +61,7 @@
     flex: 3;
 }
 .chat-conversation h3 {
-    color: Black;
+    color: inherit;
     font-weight: 500;
     font-size: 30;
 }

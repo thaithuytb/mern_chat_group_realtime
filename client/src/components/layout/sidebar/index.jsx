@@ -6,13 +6,15 @@ import { FcKindle as Diary } from "react-icons/fc";
 import { FcMultipleDevices as Dashboard } from "react-icons/fc";
 import { AiFillWechat as Chat } from "react-icons/ai";
 import { displayContext } from './../../../contexts/displayContext';
+import "./sidebar.css";
 
 const SideBar = () => {
   const [isShow, setIsShow] = useState(true);
-  const { setIsShowChangeInfo } = useContext(displayContext);
+  const { setIsShowChangeInfo, theme } = useContext(displayContext);
+  const style = theme.isDark ? theme.dark.sidebar : theme.light.sidebar;
   return (
     <>
-      <div className={isShow ? "sidebarShow" : "sidebarHidden"} onClick={() => setIsShowChangeInfo(false)}>
+      <div style={style} className={isShow ? "sidebarShow" : "sidebarHidden"} onClick={() => setIsShowChangeInfo(false)}>
         <div className="icon-toggle">
           {isShow ? (
             <IconClose onClick={() => setIsShow(!isShow)} />
