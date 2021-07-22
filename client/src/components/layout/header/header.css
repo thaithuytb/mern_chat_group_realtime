@@ -2,6 +2,8 @@
     height: 60px;
     box-sizing: border-box;
     background: inherit;
+    margin-bottom: 1px;
+    box-shadow: 0px 0.5px 10px #999;
 }
 .header-nav {
     padding: 10px 20px 10px 60px;
@@ -9,6 +11,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;  
+    box-sizing: border-box;
 }
 
 ul.header-nav {
@@ -19,6 +22,7 @@ ul.header-nav {
     font-size: 18px;
 }
 .header-nav li:last-child {
+    box-sizing: border-box;
     position: relative;
     color: inherit;
     width: 40px;
@@ -28,21 +32,48 @@ ul.header-nav {
     z-index: 20;
     cursor: pointer;
 }
-.header-nav-icon:hover {
+.header-nav-icon-true:hover {
     background: rgba(211, 208, 208, 0.2);
     color: white;
+}
+.header-nav-icon-false:hover {
+    background: rgba(211, 208, 208, 0.2);
+    color: rgb(99, 197, 143);
 }
 .header-nav-icon {
     padding: 8px;
     position: absolute;
     top: 0;
     left: 0;
+    color: inherit;
     display: block;
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
 .header-nav-force {
+    box-sizing: border-box;
+    position: relative;
+    color: inherit;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    z-index: 20;
+    cursor: pointer;
+}
+.header-nav-force::before {
+    box-sizing: border-box;
+    content: '';
+    position: absolute;
+    color: inherit;
+    width: 40px;
+    height: 40px;
+    top: -1px;
+    left: 0;
+    line-height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
     background-color: rgba(49, 230, 230, 0.4) !important;
 }
 .feature-change {
@@ -51,8 +82,7 @@ ul.header-nav {
     right: 0;
     z-index: 20;
     height: min-content;
-    border: 1px solid #999;
-    background-color: rgb(51, 48, 48);
+    background-color: inherit;
     padding: 10px 15px;
     border-radius: 7px;
     width: max-content;
@@ -83,21 +113,18 @@ ul.header-nav {
     transition: all 0.2s linear;
     cursor: pointer;
 }
-.feature-change-info:hover {
-    background-color: rgb(100, 97, 97);
-    border-radius: 4px;
-}
 .feature-change-info img {
     display: block;
     height: 50px;
     width: 50px;
+    border: 1px solid #999;
     border-radius: 50%;
     margin-right: 20px;
 }
 .feature-change-info-name {
     margin: 0;
     padding: 0;
-    color: white;
+    color: inherit;
     font-size: 20px;
     height: 30px;
     line-height: 20px;
@@ -106,7 +133,7 @@ ul.header-nav {
     margin: 0;
     font-size: 15px;
     padding: 0;
-    color: rgb(119, 114, 114);
+    color: inherit;
     height: 15px;
     line-height: 0px;
 }
@@ -118,10 +145,6 @@ ul.header-nav {
     transition: all 0.2s linear;
     cursor: pointer;
 }
-.feature-change-warning:hover {
-    background-color: rgb(100, 97, 97);
-    border-radius: 4px;
-}
 .feature-change-warning-icon {
     height: 40px;
     width: 40px;
@@ -129,14 +152,13 @@ ul.header-nav {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    color: white;
-    border: 1px solid white;
+    color: inherit;
     margin-right: 20px;
 }
 .feature-change-warning-text p:first-child {
     margin: 0;
     padding: 0;
-    color: white;
+    color: inherit;
     font-size: 18px;
     line-height: 15px;
 }
@@ -144,7 +166,7 @@ ul.header-nav {
     margin: 0;
     padding: 0;
     font-size: 15px;
-    color: rgb(119, 116, 116);
+    color: inherit;
     line-height: 22px;
 }
 .feature-change-setting {
@@ -154,25 +176,20 @@ ul.header-nav {
     transition: all 0.2s linear;
     cursor: pointer;
 }
-.feature-change-setting:hover {
-    background-color: rgb(100, 97, 97);
-    border-radius: 4px;
-}
 .feature-change-setiing-icon {
     height: 40px;
     width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    border: 1px solid white;
+    color: inherit;
     margin-right: 20px;
     border-radius: 50%;
 }
 .feature-change-setting-text{
     margin: 0;
     padding: 0;
-    color: white;
+    color: inherit;
     font-size: 18px;
 }
 .feature-change-screen {
@@ -182,25 +199,20 @@ ul.header-nav {
     transition: all 0.2s linear;
     cursor: pointer;
 }
-.feature-change-screen:hover {
-    background-color: rgb(100, 97, 97);
-    border-radius: 4px;
-}
 .feature-change-screen-icon {
     height: 40px;
     width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    border: 1px solid white;
+    color: inherit;
     margin-right: 20px;
     border-radius: 50%;
 }
 .feature-change-screen-text{
     margin: 0;
     padding: 0;
-    color: white;
+    color: inherit;
     font-size: 18px;
 }
 
@@ -211,29 +223,33 @@ ul.header-nav {
     transition: all 0.2s linear;
     cursor: pointer;
 }
-.logout:hover {
-    background-color: rgb(100, 97, 97);
-    border-radius: 4px;
-}
 .logout-icon {
     height: 40px;
     width: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    border: 1px solid white;
+    color: inherit;
     margin-right: 20px;
     border-radius: 50%;
 }
 .logout-text{
     margin: 0;
     padding: 0;
-    color: white;
+    color: inherit;
     font-size: 18px;
 }
 .feature-change-end {
     border-top: 1px solid whitesmoke;
     padding: 20px;
-    color: white;
+    color: inherit;
+} 
+/* HOVER WHEN WE CHANGE COLOR SCREEN*/
+.feature-change-true:hover {
+    background-color: rgb(100, 97, 97);
+    border-radius: 4px;
+}
+.feature-change-false:hover {
+    background-color: #baeeef;
+    border-radius: 4px;
 }

@@ -3,10 +3,9 @@
     align-items: center;
     padding: 10px 15px; 
     box-sizing: inherit;
-    border-bottom: 0.5px solid rgb(88, 82, 82);
 }
 .showDetail-title-icon-wp {
-    color: white;
+    color: inherit;
     width: 40px;
     height: 40px;
     display: flex;
@@ -19,9 +18,11 @@
     transition: all 0.2s linear;
     cursor: pointer;
 }
-.showDetail-title-icon-wp:hover {
-    border: 1px solid white;
+.showDetail-title-true:hover {
     background-color: rgb(100, 97, 97);
+}
+.showDetail-title-false:hover {
+    background-color: #baeeef;
 }
 .showDetail-title-icon {
     width: 100%;
@@ -30,17 +31,16 @@
 .showDetail-title-text {
     margin: 0;
     padding: 0;
-    color: white;
+    color: inherit;
     font-size: 20px;
 }
 .showDetail-screen {
     display: flex;
     padding: 10px 15px; 
     box-sizing: inherit;
-    border-bottom: 0.5px solid rgb(88, 82, 82);
 }
 .showDetail-screen-icon {
-    color: white;
+    color: inherit;
     width: 40px;
     height: 40px;
     display: flex;
@@ -51,7 +51,6 @@
     margin-right: 10px;
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid #999;
 }
 .showDetail-screen-text {
     max-width: 260px;
@@ -76,18 +75,8 @@
     justify-content: space-between;
     font-size: 15px;
     align-items: center;
-    border-top: 0.3px solid #999;
-    border-bottom: 0.3px solid #999;
     transition: all 0.2s linear;
     padding: 0px 10px;
-}
-.showDetail-screen-turnOff:hover {
-    background-color: rgb(100, 97, 97);
-    border-radius: 4px;
-}
-.showDetail-screen-turnOn:hover {
-    background-color: rgb(100, 97, 97);
-    border-radius: 4px;
 }
 .showDetail-screen-turnOff span:last-child {
     display: block;

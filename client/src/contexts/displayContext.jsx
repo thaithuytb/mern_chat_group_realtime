@@ -5,13 +5,14 @@ export const displayContext = React.createContext();
 const DisplayContextProvider = ({children}) => {
     const [showDetail, setShowDetail] = useState(0);
     const [ theme, setTheme ] = useState({
-        isDark: true,
+        isDark: false,
         dark: {
             header: {
                 background: "#242526",
                 color: "#b0b3b8",
-                borderBottom: "1px solid #393a3b",
+                borderBottomHeader: "1px solid #393a3b",
                 backgroundIconNav: "#3a3b3c",
+                borderAllElementLi: "1px solid #999",
             },
             sidebar: {
                 background: "#242526",
@@ -25,8 +26,11 @@ const DisplayContextProvider = ({children}) => {
         },
         light: {
             header: {
-                background: "black",
-                color: "white",
+                background: "#ffffff",
+                borderBottomHeader: "1px solid #b0b3b8",
+                color: "black",
+                backgroundIconNav: "#ffff",
+                borderAllElementLi: "1px solid #999",
             },
             sidebar: {
                 background: "white",

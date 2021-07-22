@@ -30,14 +30,12 @@ const Header = () => {
   const styleHeader = {
     background: style.background,
     color: style.color,
-    borderBottom: style.borderBottom,
+    borderBottom: style.borderBottomHeader,
   };
-  const styleHeaderLi = { background: style.backgroundIconNav };
-  // const turnOffChangeInfo = (e) => {
-  //   if (e.target.className.baseVal !== "header-nav-icon") {
-  //     setIsShowChangeInfo(false);
-  //   }
-  // };
+  const styleHeaderLi = {
+    background: style.backgroundIconNav,
+    border: style.borderAllElementLi,
+  };
   return (
     <div className="header" style={styleHeader}>
       <ul className="header-nav">
@@ -47,7 +45,7 @@ const Header = () => {
           className={isShowChangeInfo ? "header-nav-force" : ""}
         >
           <IconArrowDown
-            className="header-nav-icon"
+            className={`header-nav-icon-${theme.isDark} header-nav-icon`}
             onClick={() => {
               setIsShowChangeInfo(!isShowChangeInfo);
               showDetail !== 0 && setShowDetail(0);
@@ -57,11 +55,15 @@ const Header = () => {
           {showDetail === 0 && (
             <>
               <div
+                style={{ border: style.borderAllElementLi }}
                 className={
                   isShowChangeInfo ? "feature-change" : "feature-change none"
                 }
               >
-                <div className="feature-change-info">
+                <div
+                  className={`feature-change-${theme.isDark} feature-change-info`}
+                  onClick={() => setShowDetail(1)}
+                >
                   <img src={noAvt} alt="noAvt" />
                   <div className="feature-change-info-text">
                     <p className="feature-change-info-name">{user.name}</p>
@@ -70,8 +72,14 @@ const Header = () => {
                     </p>
                   </div>
                 </div>
-                <div className="feature-change-warning">
-                  <div className="feature-change-warning-icon">
+                <div
+                  className={`feature-change-${theme.isDark} feature-change-warning`}
+                  onClick={() => setShowDetail(2)}
+                >
+                  <div
+                    className="feature-change-warning-icon"
+                    style={{ border: style.borderAllElementLi }}
+                  >
                     <IconWarning />
                   </div>
                   <div className="feature-change-warning-text">
@@ -80,8 +88,14 @@ const Header = () => {
                   </div>
                 </div>
 
-                <div className="feature-change-setting">
-                  <div className="feature-change-setiing-icon">
+                <div
+                  className={`feature-change-${theme.isDark} feature-change-setting`}
+                  onClick={() => setShowDetail(3)}
+                >
+                  <div
+                    className="feature-change-setiing-icon"
+                    style={{ border: style.borderAllElementLi }}
+                  >
                     <IconSetting />
                   </div>
                   <div className="feature-change-setting-text">
@@ -89,20 +103,26 @@ const Header = () => {
                   </div>
                 </div>
 
-                <div className="feature-change-screen">
-                  <div className="feature-change-screen-icon">
+                <div
+                  className={`feature-change-${theme.isDark} feature-change-screen`}
+                  onClick={() => setShowDetail(4)}
+                >
+                  <div
+                    className="feature-change-screen-icon"
+                    style={{ border: style.borderAllElementLi }}
+                  >
                     <IconScreen />
                   </div>
-                  <div
-                    className="feature-change-screen-text"
-                    onClick={() => setShowDetail(4)}
-                  >
+                  <div className="feature-change-screen-text">
                     Thay đổi màu sáng màn hình
                   </div>
                 </div>
 
-                <div className="logout" onClick={userLogout}>
-                  <div className="logout-icon">
+                <div className={`feature-change-${theme.isDark} logout`} onClick={userLogout}>
+                  <div
+                    className="logout-icon"
+                    style={{ border: style.borderAllElementLi }}
+                  >
                     <IconLogout />
                   </div>
                   <div className="logout-text">Logout</div>
@@ -115,6 +135,7 @@ const Header = () => {
           )}
           {showDetail !== 0 && (
             <div
+              style={{ border: style.borderAllElementLi }}
               className={
                 isShowChangeInfo ? "feature-change" : "feature-change none"
               }

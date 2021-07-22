@@ -1,6 +1,6 @@
 .chat {
     width: 100%;
-    height: calc(100vh - 60px);
+    height: calc(100vh - 61px);
     background: inherit;
 }
 .chatwrapper {
