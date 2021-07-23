@@ -16,7 +16,7 @@ const DisplayContextProvider = ({children}) => {
             },
             sidebar: {
                 background: "#242526",
-                color: "#b0b3b8",
+                color: "#dce2ec",
                 borderRight: "2px solid #393a3b", 
             },
             component : {
@@ -33,8 +33,9 @@ const DisplayContextProvider = ({children}) => {
                 borderAllElementLi: "1px solid #999",
             },
             sidebar: {
-                background: "white",
-                color: "black",
+                background: "#ffff",
+                color: "#4692f5",
+                borderRight: "2px solid #adabab", 
             },
             component : {
                 background: 'white',

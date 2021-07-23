@@ -30,19 +30,21 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    align-items: center;
 }
 .list-sidebar li {
     width: 45px;
     height: 45px;
     margin: auto;
 }
-.list-sidebar li:hover {
-    background-color: rgb(65, 64, 64);
-}
 .list-sidebar li a {
     text-decoration: none;
-    color: white;
-    font-size: 30px;
+    width: 100%;
+    height: 100%;
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .list-sidebar-mock {
     position: relative;
@@ -56,4 +58,19 @@
     height: 100vh;
     opacity: 0.6;
     width: 0;
+}
+.list-sidebar-icon {
+    width: 100%;
+    height: 100%;
+    padding: 8px;
+}
+/* HOVER WHEN WE CHANGE COLOR SCREEN*/
+.list-sidebar-true:hover {
+    background-color: rgb(100, 97, 97);
+    border-radius: 6px;
+}
+.list-sidebar-false:hover {
+    background-color: #baeeef;
+    border-radius: 6px;
+    color: #242526;
 }

@@ -2,9 +2,9 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { BiMenu as IconMenu } from "react-icons/bi";
 import { BiX as IconClose } from "react-icons/bi";
-import { FcKindle as Diary } from "react-icons/fc";
-import { FcMultipleDevices as Dashboard } from "react-icons/fc";
-import { AiFillWechat as Chat } from "react-icons/ai";
+import { FcViewDetails as IconDiary } from "react-icons/fc";
+import { FcMultipleDevices as IconDashboard } from "react-icons/fc";
+import { AiFillWechat as IconChat } from "react-icons/ai";
 import { displayContext } from './../../../contexts/displayContext';
 import "./sidebar.css";
 
@@ -26,19 +26,19 @@ const SideBar = () => {
           )}
         </div>
         <ul className="list-sidebar">
-          <li>
+          <li className={theme.isDark ? "list-sidebar-true" : "list-sidebar-false"}>
             <Link to="/dashboard">
-              <Dashboard />
+              <IconDashboard className="list-sidebar-icon" />
             </Link>
           </li>
-          <li>
+          <li className={theme.isDark ? "list-sidebar-true" : "list-sidebar-false"}>
             <Link to="/diary">
-              <Diary />
+              <IconDiary className="list-sidebar-icon" />
             </Link>
           </li>
-          <li>
+          <li className={theme.isDark ? "list-sidebar-true" : "list-sidebar-false"}>
             <Link to="/chat">
-              <Chat />
+              <IconChat className="list-sidebar-icon" />
             </Link>
           </li>
         </ul>
