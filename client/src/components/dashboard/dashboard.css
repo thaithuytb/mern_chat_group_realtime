@@ -7,7 +7,7 @@
     flex-direction: column;
     height: calc(100vh - 61px);
 }
-.dashboard-welcome {
+.dashboard-welcome-true {
     position: relative;
     font-size: 80px;
     text-shadow: 2px 2px 5px rgb(145, 143, 143), -2px 2px 5px rgb(248, 241, 228), 3px -3px 5px rgb(248, 241, 228), -4px -4px 5px rgb(248, 241, 228),  -5px -5px 6px rgb(248, 241, 228);
@@ -17,10 +17,20 @@
     font-weight: 500;
     letter-spacing: 2px;
 }
+.dashboard-welcome-false {
+    position: relative;
+    font-size: 80px;
+    text-shadow: 2px 2px 5px rgb(59 58 58), 1px 4px 5px rgb(236 232 227), 1px -5px 5px rgb(107 107 104), -4px -4px 5px rgb(122 121 119), -5px -5px 6px rgb(219 219 208);
+    font-family: sans-serif;
+    padding: 0px 10px;
+    overflow: hidden;
+    font-weight: 500;
+    letter-spacing: 2px;
+}
 .dashboard-welcome-span {
     font-size: 100px;
 }
-.dashboard-welcome-after {
+.dashboard-welcome-after-true {
     position: relative;
     font-size: 70px;
     text-shadow: 2px 2px 5px rgb(145, 143, 143), -2px 2px 5px rgb(248, 241, 228), 3px -3px 5px rgb(248, 241, 228), -4px -4px 5px rgb(248, 241, 228),  -5px -5px 6px rgb(248, 241, 228);
@@ -29,7 +39,16 @@
     overflow: hidden;
     font-weight: 500;
 }
-.dashboard-welcome::before {
+.dashboard-welcome-after-false {
+    position: relative;
+    font-size: 70px;
+    text-shadow: 2px 2px 5px rgb(59 58 58), 1px 4px 5px rgb(236 232 227), 1px -5px 5px rgb(107 107 104), -4px -4px 5px rgb(122 121 119), -5px -5px 6px rgb(219 219 208);
+    font-family: sans-serif;
+    padding: 0px 10px;
+    overflow: hidden;
+    font-weight: 500;
+}
+.dashboard-welcome-true::before {
     position: absolute;
     display: block;
     content: '';
@@ -38,6 +57,18 @@
     width: 120%;
     height: 120%;
     background: linear-gradient(90deg, transparent 0%, #18191a 5%, #18191a 100%); 
+    animation: animationBackground 6s linear 1.5s forwards;
+    will-change: left;
+}
+.dashboard-welcome-false::before {
+    position: absolute;
+    display: block;
+    content: '';
+    left: 120%;
+    top: -10%;
+    width: 120%;
+    height: 120%;
+    background: linear-gradient(90deg, transparent 0%, white 5%,#f5f8fa 100%); 
     animation: animationBackground 6s linear 1.5s forwards;
     will-change: left;
 }
@@ -61,8 +92,8 @@ video {
     }
 }
 .dashboard h1 span {
-    color: rgb(238, 157, 157);
-    text-shadow: 2px 2px 5px rgb(145, 143, 143), -2px 2px 5px rgb(248, 241, 228), 3px -3px 5px rgb(248, 241, 228), -4px -4px 5px rgb(248, 241, 228),  -5px -5px 6px rgb(248, 241, 228);
+    color: rgb(224 113 113);
+    text-shadow: 2px 2px 5px rgb(179 57 57), 4px 4px 5px rgb(232 146 207), 6px -3px 5px rgb(248 241 228), -4px -4px 5px rgb(214 136 149), -5px -5px 6px rgb(251 227 227);
 }
 .dashboard h2 {
     font-family: 'Shadows Into Light';

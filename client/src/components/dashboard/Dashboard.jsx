@@ -9,7 +9,7 @@ let userOnlineSocket;
 const Dashboard = () => {
   const [isShowVideo, setIsShowVideo] = useState(true);
   const timeoutRef = useRef(null);
-  const { setIsShowChangeInfo, showDetail, setShowDetail } =
+  const { setIsShowChangeInfo, showDetail, setShowDetail, theme } =
     useContext(displayContext);
   const {
     authState: { user },
@@ -47,14 +47,14 @@ const Dashboard = () => {
       {isShowVideo ? (
         <>
           <video src={videoBackground} muted="" autoPlay="true" />
-          <h1 className="dashboard-welcome">
+          <h1 className={ theme.isDark ? "dashboard-welcome-true" : "dashboard-welcome-false"}>
             <span className="dashboard-welcome-span">W</span>ELCO
             <span>ME T</span>O MY APP
           </h1>
         </>
       ) : (
         <>
-          <h1 className="dashboard-welcome-after">
+          <h1 className={ theme.isDark ? "dashboard-welcome-after-true" : "dashboard-welcome-after-false"}>
             <span className="dashboard-welcome-span">W</span>ELCO
             <span>ME T</span>O MY APP
           </h1>
