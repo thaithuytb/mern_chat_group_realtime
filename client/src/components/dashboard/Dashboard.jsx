@@ -47,18 +47,32 @@ const Dashboard = () => {
       {isShowVideo ? (
         <>
           <video src={videoBackground} muted="" autoPlay="true" />
-          <h1 className={ theme.isDark ? "dashboard-welcome-true" : "dashboard-welcome-false"}>
+          <h1
+            className={
+              theme.isDark
+                ? "dashboard-welcome-true"
+                : "dashboard-welcome-false"
+            }
+          >
             <span className="dashboard-welcome-span">W</span>ELCO
             <span>ME T</span>O MY APP
           </h1>
         </>
       ) : (
         <>
-          <h1 className={ theme.isDark ? "dashboard-welcome-after-true" : "dashboard-welcome-after-false"}>
-            <span className="dashboard-welcome-span">W</span>ELCO
-            <span>ME T</span>O MY APP
-          </h1>
-          <h2>NGÔ QUANG THÁI</h2>
+          <div className="dashboardMain">
+            <h1
+              className={
+                theme.isDark
+                  ? "dashboard-welcome-after-true"
+                  : "dashboard-welcome-after-false"
+              }
+            >
+              <span className="dashboard-welcome-span">W</span>ELCO
+              <span>ME T</span>O MY APP
+            </h1>
+            <h2>NGÔ QUANG THÁI</h2>
+          </div>
         </>
       )}
     </div>
