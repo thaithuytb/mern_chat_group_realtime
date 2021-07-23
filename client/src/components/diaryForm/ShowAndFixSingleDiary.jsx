@@ -4,6 +4,7 @@ import { BiX as IconClose } from "react-icons/bi";
 import { Form } from "react-bootstrap";
 import DeleteDiary from "./DeleteDiary";
 import { postsContext } from "../../contexts/postsContext";
+import { displayContext } from './../../contexts/displayContext';
 import "./diary.css";
 
 const ShowAndFixSingleDiary = ({ posts }) => {
@@ -14,8 +15,9 @@ const ShowAndFixSingleDiary = ({ posts }) => {
     _id: null
   });
   const { status, fixTitle, fixDescription, _id} = isShowFixPost;
-
   const { putSinglePost, getAllMyPosts } = useContext(postsContext);
+  const { theme } = useContext(displayContext);
+  const styleBackgroundChild = { background: theme.isDark ? theme.dark.component.backgroundChild : theme.light.component.backgroundChild};
   let formFixPost;
 
   const onChangeValueForm = (e) => {
@@ -45,7 +47,7 @@ const ShowAndFixSingleDiary = ({ posts }) => {
 
   if (status) {
     formFixPost = (
-      <div className="Form-addDiary">
+      <div className="Form-addDiary" style={styleBackgroundChild}>
         <h3>Sửa nhật ký</h3>
         <Form className="addDiaryForm" onSubmit={onSubmitFormFixSingleDiary} >
           <Form.Group className="formGroup-addDiary">
@@ -87,7 +89,7 @@ const ShowAndFixSingleDiary = ({ posts }) => {
     <>
       {status && (
         <div
-          className="blur"
+          className={ theme.isDark ? "overlay-true": "overlay-false"}
           onClick={() => {
             setIsShowFixPost({ ...isShowFixPost, status: false });
           }}
@@ -96,12 +98,12 @@ const ShowAndFixSingleDiary = ({ posts }) => {
       <ul className="showDiary_list">
         {posts.map((post) => {
           return (
-            <li className="showDiary_item" key={post._id}>
+            <li style={styleBackgroundChild} className="showDiary_item" key={post._id}>
               <div className="showDiary-icons">
-                <span>
+                <span className={ theme.isDark ? "showDiary-icon-true" : "showDiary-icon-false" }>
                   <DeleteDiary _id={post._id}/>
                 </span>
-                <span>
+                <span className={ theme.isDark ? "showDiary-icon-true" : "showDiary-icon-false" }>
                   <FixPostsIcon
                     onClick={() => {
                       setIsShowFixPost({

@@ -22,6 +22,7 @@ const DisplayContextProvider = ({children}) => {
             component : {
                 background: '#18191a',
                 color: '#e4ddbf',
+                backgroundChild: "#3a3b3c",
             }
         },
         light: {
@@ -40,6 +41,7 @@ const DisplayContextProvider = ({children}) => {
             component : {
                 background: 'white',
                 color: 'black',
+                backgroundChild: "#ffff",
             }
         }
     })

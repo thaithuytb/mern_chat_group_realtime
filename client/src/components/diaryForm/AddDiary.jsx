@@ -3,6 +3,7 @@ import { BiMessageAdd as Add } from "react-icons/bi";
 import { Form } from "react-bootstrap";
 import { BiX as IconClose } from "react-icons/bi";
 import { postsContext } from "../../contexts/postsContext";
+import { displayContext } from './../../contexts/displayContext';
 import "./diary.css";
 
 const AddDiary = () => {
@@ -13,6 +14,9 @@ const AddDiary = () => {
   })
 
   const { getAllMyPosts, postSinglePost } = useContext(postsContext);
+  const { theme } = useContext(displayContext);
+  const styleBackgroundChild = { background: theme.isDark ? theme.dark.component.backgroundChild : theme.light.component.backgroundChild};
+
 
   const { title, description } = valueDiaryForm;
   const onChangeValueForm = (e) => {
@@ -45,7 +49,7 @@ const AddDiary = () => {
 
   if (showAddDiary) {
     body = (
-      <div className="Form-addDiary">
+      <div className="Form-addDiary" style={styleBackgroundChild}>
         <h3>Thêm nhật ký</h3>
         <Form className="addDiaryForm" onSubmit={submitFormAddDiary}>
           <Form.Group className="formGroup-addDiary">
@@ -81,9 +85,9 @@ const AddDiary = () => {
   }
   return (
     <>
-      {showAddDiary && <div className="blur" onClick={hiddenFormAddDiary} />}
+      {showAddDiary && <div className={theme.isDark ? "overlay-true" : "overlay-false"} onClick={hiddenFormAddDiary} />}
       <span className="addDiary-text">Thêm nhật ký: </span>
-      <div className="addDiary">
+      <div className={showAddDiary ? "addDiary-true" : "addDiary-false"} style={styleBackgroundChild}>
         <Add className="addDiary-icon" onClick={showFormAddDiary} />
       </div>
       {body}

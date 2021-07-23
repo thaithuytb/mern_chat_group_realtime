@@ -1,5 +1,6 @@
 .diary {
     width: 100%;
+    height: calc(100vh - 61px);
 }
 .diary_header {
     padding-top: 20px;
@@ -38,9 +39,14 @@
     height: 40px;
     text-align: center;
 }
-.showDiary-icons span:hover {
-    border: 1px solid rgb(114, 94, 94);
-    border-radius: 5px;
+/* HOVER WHEN WE CHANGE COLOR SCREEN*/
+.showDiary-icon-true:hover {
+    background-color: rgb(100, 97, 97);
+    border-radius: 4px;
+}
+.showDiary-icon-false:hover {
+    background-color: #baeeef;
+    border-radius: 4px;
 }
 .showDiary_item div {
     margin: 5px auto;
@@ -50,7 +56,7 @@
     margin-top: 10px !important;
     height: min-content;
     padding: 4px;
-    border: 1px solid #d3d15b;
+    border: 1px solid #838581;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
@@ -65,12 +71,12 @@
 
 .emptyDiary {
     text-align: center;
-    width: 100%;
-    border: 1px solid blue;
-    background-color: lightblue;
+    color: inherit;
+    font-size: 20px;
+
 }
 /* addDiary */
-.blur {
+.overlay-true {
     background-color: rgb(133, 133, 130);
     position: absolute;
     width: 100%;
@@ -79,7 +85,16 @@
     left: 0;
     opacity: 0.3;
 }
-.addDiary {
+.overlay-false {
+    background-color:rgb(234 239 212);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+}
+.addDiary-true {
     cursor: pointer;
     position: fixed;
     bottom: 40px;
@@ -88,7 +103,20 @@
     height: 50px;
     border: 1px solid #78e28a;
     border-radius: 50%;
-    background-color: aliceblue;
+    background-color: rgba(49, 230, 230, 0.4) !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.addDiary-false {
+    cursor: pointer;
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #78e28a;
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -105,13 +133,24 @@
     border: 1px solid #999;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    right: 50%;
+    transform: translate(50%, -50%);
     z-index: 20;
     background-color: rgb(245, 245, 245);
     width: 450px;
     min-height: 360px;
     border-radius: 6px;
+    animation: showFormAddDiary 0.25s ease-in;
+    will-change: opacity, transform;
+}
+@keyframes showFormAddDiary {
+    from {
+        transform: translate(80%, -30%);
+        opacity: 0.7;
+    } to {
+        transform: translate(50%, -50%);
+        opacity: 1;
+    }  
 }
 .closeModalAddDiary {
     position: absolute;
@@ -122,7 +161,7 @@
 }
 .Form-addDiary h3 {
     text-align: center;
-    color: black;
+    color: inherit;
     width: 100%;
     margin: 0;
     border: none;
@@ -140,24 +179,26 @@
     margin-bottom: 8px;
 }
 .laybel-addDiary {
-    color: black;
+    color: inherit;
     font-size: 17px;
 }
 .input-addDiary {
     margin: 0px auto;
+    padding: 5px 0px 5px 10px;
     border: 1px solid #999;
-    color: black;
+    color: inherit;
 }
 .textarea-addDiary {
     width: 100%;
     min-height: 100px;
     cursor: pointer;
     outline: none;
+    background: inherit;
 }
 .add-diary-button {
     margin-top: 20px;
-    color: black;
-    background: none !important;
+    color: inherit;
+    background: inherit !important;
     cursor: pointer;
     border-radius: 7px !important;
 }
