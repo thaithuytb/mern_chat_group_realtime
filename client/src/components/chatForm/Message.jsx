@@ -1,6 +1,7 @@
 import React, { useContext, useState, useRef, useEffect } from "react";
 import { chatContext } from "../../contexts/chatContext";
 import { authContext } from "./../../contexts/authContext";
+import { displayContext } from "../../contexts/displayContext";
 import { format } from "timeago.js";
 import noAvt from "../../assets/noAvt.png";
 import { io } from "socket.io-client";
@@ -38,6 +39,9 @@ const Message = () => {
     setDataNotifyMessage,
     dataNotifyMessage,
   } = useContext(chatContext);
+
+  const { theme } = useContext(displayContext);
+  const styleBackgroundChild = { background: theme.isDark? theme.dark.component.backgroundChild : theme.light.component.backgroundChild};
 
   useEffect(() => {
     chatSocket = io(deSocket, { transports: ["websocket"] });
@@ -175,12 +179,13 @@ const Message = () => {
       </div>
       <form className="message-form" onSubmit={submitForm}>
         <textarea
-          placeholder="   Abc"
+          placeholder="Abc"
           name="message"
           value={message}
           onChange={changeForm}
+          style={styleBackgroundChild}
         />
-        <button type="submit">chat</button>
+        <button type="submit" style={styleBackgroundChild}>chat</button>
       </form>
     </>
   );

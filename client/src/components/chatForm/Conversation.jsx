@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { chatContext } from "../../contexts/chatContext";
 import { authContext } from "./../../contexts/authContext";
+import { displayContext } from './../../contexts/displayContext';
 import { setShowConversations } from "./../../utils/setShowConversations";
 import { checkTwoArr } from "../../utils/checkTwoArr";
 import noAvt from "../../assets/noAvt.png";
@@ -18,6 +19,7 @@ const Conversation = () => {
     sendSeenMessage,
     getAllNotify,
   } = useContext(chatContext);
+  const { theme } = useContext(displayContext);
  
 
   const getMessageInConversation = async (conversationId, dataNotify) => {
@@ -79,7 +81,7 @@ const Conversation = () => {
                 />
                 <img src={noAvt} alt="noAvt" />
               </div>
-              <div className="conversationText">    
+              <div className={ theme.isDark ? "conversationText-true": "conversationText-false"}>    
                 <span className="conversationText-name">{setShowConversations(myfriends)}</span>
                 <span className={dataNotify.notify=== 0 ? "conversationText-notify-none" : "conversationText-notify"}>{dataNotify.notify}</span>
               </div>

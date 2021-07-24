@@ -5,7 +5,7 @@ export const displayContext = React.createContext();
 const DisplayContextProvider = ({children}) => {
     const [showDetail, setShowDetail] = useState(0);
     const [ theme, setTheme ] = useState({
-        isDark: false,
+        isDark: true,
         dark: {
             header: {
                 background: "#242526",

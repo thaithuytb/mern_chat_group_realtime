@@ -6,8 +6,10 @@ import Message from "./Message";
 import "./chatForm.css";
 
 const ChatForm = () => {
-  const { setIsShowChangeInfo, showDetail, setShowDetail } =
+  const {theme, setIsShowChangeInfo, showDetail, setShowDetail } =
     useContext(displayContext);
+    const styleBackgroundChild = { background: theme.isDark? theme.dark.component.backgroundChild: theme.light.component.backgroundChild};
+
   return (
     <div
       className="chat"
@@ -32,8 +34,8 @@ const ChatForm = () => {
             </div>
           </div>
           <form className="conversation-form">
-            <input placeholder="   Tìm kiếm" type="text" />
-            <button disabled>send</button>
+            <input placeholder="Tìm kiếm" type="text" style={styleBackgroundChild} />
+            <button disabled style={styleBackgroundChild}>send</button>
           </form>
           <div className="conversation-list">
             <Conversation />
