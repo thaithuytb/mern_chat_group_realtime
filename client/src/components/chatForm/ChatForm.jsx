@@ -1,9 +1,9 @@
+import { displayContext } from "contexts/displayContext";
 import React, { useContext } from "react";
-import { displayContext } from "./../../contexts/displayContext";
-import Conversation from "./Conversation";
-import Message from "./Message";
 // import InfoMessage from "./InfoMessage";
 import "./chatForm.css";
+import Conversation from "./Conversation";
+import Message from "./Message";
 
 const ChatForm = () => {
   const {theme, setIsShowChangeInfo, showDetail, setShowDetail } =

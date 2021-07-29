@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { REACT_APP_API } from './../config/constants';
+import { REACT_APP_API } from 'constants/constantReactApi';
 const chatApi = {
     getAllConversation: () => {
         return axios.get(`${REACT_APP_API}/conversations`);

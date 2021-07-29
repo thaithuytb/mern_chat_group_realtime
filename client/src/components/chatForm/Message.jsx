@@ -1,11 +1,11 @@
-import React, { useContext, useState, useRef, useEffect } from "react";
-import { chatContext } from "../../contexts/chatContext";
-import { authContext } from "./../../contexts/authContext";
-import { displayContext } from "../../contexts/displayContext";
-import { format } from "timeago.js";
-import noAvt from "../../assets/noAvt.png";
+import assets from "constants/constantAssets";
+import { REACT_APP } from "constants/constantReactApi";
+import { authContext } from "contexts/authContext";
+import { chatContext } from "contexts/chatContext";
+import { displayContext } from "contexts/displayContext";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
-import { REACT_APP } from "../../config/constants";
+import { format } from "timeago.js";
 
 let chatSocket;
 const addOneNotify = (data) => {
@@ -164,7 +164,7 @@ const Message = () => {
                   ref={scrollRef}
                 >
                   <div className="messageImg">
-                    <img alt="noAvt" src={noAvt} />
+                    <img alt="noAvt" src={assets.noAvt} />
                   </div>
                   <div className="messageInfo">
                     <div className="messageText">{mes.message}</div>

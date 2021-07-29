@@ -1,19 +1,19 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import './App.css';
 import AuthForm from './components/authForm/AuthForm';
 import Landing from './components/authForm/Landing';
+import ChatForm from './components/chatForm/ChatForm';
 //import protect router
 import Dashboard from './components/dashboard/Dashboard';
 import Diary from './components/diaryForm/Diary';
-import ChatForm from './components/chatForm/ChatForm';
 import ProtectRoute from './components/privateRoute/ProtectRoute';
 //import context
 import AuthContextProvider from './contexts/authContext';
-import PostsContextProvider from './contexts/postsContext';
 import ChatContextProvider from './contexts/chatContext';
 import DisplayContextProvider from './contexts/displayContext';
+import PostsContextProvider from './contexts/postsContext';
 
-import './App.css';
 function App() {
   return (
     <AuthContextProvider>

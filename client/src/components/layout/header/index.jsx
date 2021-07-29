@@ -1,18 +1,17 @@
+import { authContext } from "contexts/authContext";
+import { displayContext } from "contexts/displayContext";
 import React, { useContext } from "react";
-import { authContext } from "./../../../contexts/authContext";
-import { displayContext } from "./../../../contexts/displayContext";
-import ShowDetail from "./showDetail";
+import {
+  AiFillSetting as IconSetting, AiFillWarning as IconWarning
+} from "react-icons/ai";
 import {
   BiDownArrow as IconArrowDown,
-  BiLogOutCircle as IconLogout,
+  BiLogOutCircle as IconLogout
 } from "react-icons/bi";
-import {
-  AiFillWarning as IconWarning,
-  AiFillSetting as IconSetting,
-} from "react-icons/ai";
 import { BsFillBrightnessHighFill as IconScreen } from "react-icons/bs";
 import noAvt from "../../../assets/noAvt.png";
 import "./header.css";
+import ShowDetail from "./showDetail";
 
 const Header = () => {
   const {

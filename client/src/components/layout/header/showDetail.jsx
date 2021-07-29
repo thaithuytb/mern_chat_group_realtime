@@ -1,13 +1,13 @@
+import { displayContext } from "contexts/displayContext";
 import React, { useContext } from "react";
-import { displayContext } from "./../../../contexts/displayContext";
-import { Redirect } from "react-router-dom";
 import {
   BsArrowBarLeft as IconBack,
   BsFillBrightnessHighFill as IconScreen,
-  BsFillInboxFill as IconCollapse,
+  BsFillInboxFill as IconCollapse
 } from "react-icons/bs";
-import { FiSettings as IconSetting } from "react-icons/fi";
 import { FaKeyboard as IconKeyboard } from "react-icons/fa";
+import { FiSettings as IconSetting } from "react-icons/fi";
+import { Redirect } from "react-router-dom";
 import "./showDetail.css";
 const ShowDetail = () => {
   const { theme, setTheme, showDetail, setShowDetail } =

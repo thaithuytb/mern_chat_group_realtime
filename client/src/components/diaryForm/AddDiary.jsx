@@ -1,9 +1,8 @@
-import React, { useState, useContext } from "react";
-import { BiMessageAdd as Add } from "react-icons/bi";
+import { displayContext } from "contexts/displayContext";
+import { postsContext } from "contexts/postsContext";
+import React, { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
-import { BiX as IconClose } from "react-icons/bi";
-import { postsContext } from "../../contexts/postsContext";
-import { displayContext } from './../../contexts/displayContext';
+import { BiMessageAdd as Add, BiX as IconClose } from "react-icons/bi";
 import "./diary.css";
 
 const AddDiary = () => {

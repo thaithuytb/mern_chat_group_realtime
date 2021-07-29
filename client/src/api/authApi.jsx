@@ -1,6 +1,5 @@
 import axios from 'axios';
-import { REACT_APP_API_AUTH } from './../config/constants';
-import { REACT_APP_API } from './../config/constants';
+import { REACT_APP_API, REACT_APP_API_AUTH } from 'constants/constantReactApi';
 const authApi = {
     loginAuth: (user) => {
         return axios.post(`${REACT_APP_API_AUTH}/login`, user );

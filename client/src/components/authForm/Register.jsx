@@ -1,10 +1,10 @@
+import { authContext } from "contexts/authContext";
 import React, { useContext, useState } from "react";
-import { Link, Redirect } from "react-router-dom";
 import { Form } from "react-bootstrap";
 import { FiLock, FiUser } from "react-icons/fi";
-import { authContext } from "../../contexts/authContext";
-
+import { Link, Redirect } from "react-router-dom";
 import "./style.css";
+
 const RegisterForm = () => {
   const [checkFormRegister, setCheckFormRegister] = useState({
     comfirmPasswordCorrect: true,

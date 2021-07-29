@@ -1,9 +1,9 @@
-import React, { useEffect, useContext, useRef, useState } from "react";
-import { authContext } from "./../../contexts/authContext";
-import { displayContext } from "./../../contexts/displayContext";
+import assets from "constants/constantAssets";
+import { REACT_APP } from "constants/constantReactApi";
+import { authContext } from "contexts/authContext";
+import { displayContext } from "contexts/displayContext";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
-import { REACT_APP } from "./../../config/constants";
-import videoBackground from "./../../assets/videoBackground.mp4";
 import "./dashboard.css";
 let userOnlineSocket;
 const Dashboard = () => {
@@ -46,7 +46,7 @@ const Dashboard = () => {
     >
       {isShowVideo ? (
         <>
-          <video src={videoBackground} muted="" autoPlay="true" />
+          <video src={assets.videoBackground} muted="" autoPlay="true" />
           <h1
             className={
               theme.isDark

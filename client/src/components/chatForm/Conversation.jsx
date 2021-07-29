@@ -1,11 +1,11 @@
+import assets from "constants/constantAssets";
+import { authContext } from "contexts/authContext";
+import { chatContext } from "contexts/chatContext";
+import { displayContext } from "contexts/displayContext";
 import React, { useContext } from "react";
-import { chatContext } from "../../contexts/chatContext";
-import { authContext } from "./../../contexts/authContext";
-import { displayContext } from './../../contexts/displayContext';
-import { setShowConversations } from "./../../utils/setShowConversations";
-import { checkTwoArr } from "../../utils/checkTwoArr";
-import noAvt from "../../assets/noAvt.png";
-import { getArrIdMembers } from "../../utils/getArrIdMember";
+import { checkTwoArr } from "utils/checkTwoArr";
+import { getArrIdMembers } from "utils/getArrIdMember";
+import { setShowConversations } from "utils/setShowConversations";
 const Conversation = () => {
   const {
     authState: { user },
@@ -79,7 +79,7 @@ const Conversation = () => {
                       : "conversationStatus true"
                   }
                 />
-                <img src={noAvt} alt="noAvt" />
+                <img src={assets.noAvt} alt="noAvt" />
               </div>
               <div className={ theme.isDark ? "conversationText-true": "conversationText-false"}>    
                 <span className="conversationText-name">{setShowConversations(myfriends)}</span>

@@ -1,11 +1,11 @@
+import Loading from "components/loading/Loading";
+import { authContext } from "contexts/authContext";
+import { displayContext } from "contexts/displayContext";
+import { postsContext } from "contexts/postsContext";
 import React, { useContext, useEffect } from "react";
-import { postsContext } from "../../contexts/postsContext";
-import { authContext } from "./../../contexts/authContext";
-import { displayContext } from "./../../contexts/displayContext";
-import Loading from "../loading/Loading";
-import ShowAndFixSingleDiary from "./ShowAndFixSingleDiary";
-import EmptyDiary from "./EmptyDiary";
 import AddDiary from "./AddDiary";
+import EmptyDiary from "./EmptyDiary";
+import ShowAndFixSingleDiary from "./ShowAndFixSingleDiary";
 const Diary = () => {
   const {
     authState: { user },

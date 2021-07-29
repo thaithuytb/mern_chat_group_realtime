@@ -1,8 +1,7 @@
-import React, { createContext, useState, useEffect } from "react";
-import authApi from "./../api/authApi";
-import { LOCAL_STORAGE_TOKEN } from "../config/constants";
-//import utils
-import { setHeadersToken } from "../utils/setHeadersToken";
+import authApi from "api/authApi";
+import { LOCAL_STORAGE_TOKEN } from "constants/constantReactApi";
+import React, { createContext, useEffect, useState } from "react";
+import { setHeadersToken } from "utils/setHeadersToken";
 export const authContext = createContext();
 
 const AuthContextProvider = ({ children }) => {

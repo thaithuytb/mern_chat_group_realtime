@@ -1,9 +1,8 @@
-import React, { useState, useContext } from "react";
-import { Link, Redirect } from 'react-router-dom';
+import AuthContextProvider from "contexts/authContext";
+import React, { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
 import { FiLock, FiUser } from "react-icons/fi";
-import { authContext } from './../../contexts/authContext';
-// import Loading from './../loading/Loading';
+import { Link, Redirect } from 'react-router-dom';
 import './style.css';
 const LoginForm = () => {
   const [ inforUser, setInforUser ] = useState({
@@ -11,7 +10,7 @@ const LoginForm = () => {
     password: ''
   })
   const [ dataFromServer, setDataFromServer ] = useState(null);
-  const {userLoginForm, authState: {isAuthenticated} } = useContext(authContext);
+  const {userLoginForm, authState: {isAuthenticated} } = useContext(AuthContextProvider);
 
   if (isAuthenticated) {
     return <Redirect to='/dashboard' />

@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
-import { GiCrucifix as FixPostsIcon } from "react-icons/gi";
-import { BiX as IconClose } from "react-icons/bi";
+import { displayContext } from "contexts/displayContext";
+import { postsContext } from "contexts/postsContext";
+import React, { useContext, useState } from "react";
 import { Form } from "react-bootstrap";
+import { BiX as IconClose } from "react-icons/bi";
+import { GiCrucifix as FixPostsIcon } from "react-icons/gi";
 import DeleteDiary from "./DeleteDiary";
-import { postsContext } from "../../contexts/postsContext";
-import { displayContext } from './../../contexts/displayContext';
 import "./diary.css";
 
 const ShowAndFixSingleDiary = ({ posts }) => {

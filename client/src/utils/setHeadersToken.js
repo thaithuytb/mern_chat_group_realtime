@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { LOCAL_STORAGE_TOKEN } from '../config/constants';
+import { LOCAL_STORAGE_TOKEN } from '../constants/constantReactApi';
 export const setHeadersToken = (token) => {
     if (token){
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;

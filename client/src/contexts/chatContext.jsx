@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useContext} from "react";
-import chatApi from "./../api/chatApi";
-import { authContext } from './authContext';
-import { getArrIdMembers } from './../utils/getArrIdMember';
+import chatApi from "api/chatApi";
+import React, { useContext, useEffect, useState } from "react";
+import { getArrIdMembers } from "utils/getArrIdMember";
+import { authContext } from "./authContext";
 export const chatContext = React.createContext();
 const ChatContextProvider = ({ children }) => {
   const [conversations, setConversations] = useState({

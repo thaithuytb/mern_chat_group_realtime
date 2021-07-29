@@ -1,12 +1,12 @@
+import Header from "components/layout/header";
+import SideBar from "components/layout/sidebar";
+import Loading from "components/loading/Loading";
+import { authContext } from "contexts/authContext";
+import { displayContext } from "contexts/displayContext";
 import React, { useContext } from "react";
 import { Redirect, Route } from "react-router-dom";
-import { authContext } from "../../contexts/authContext";
-import { displayContext } from './../../contexts/displayContext';
-import Loading from "../loading/Loading";
-import Sidebar from "../layout/sidebar";
-import Header from "../layout/header";
-
 import "./appMain.css";
+
 
 const ProtectRoute = ({ component: Component, ...rest }) => {
   const {
@@ -24,7 +24,7 @@ const ProtectRoute = ({ component: Component, ...rest }) => {
       render={(props) =>
         isAuthenticated ? (
           <div className="wp">
-            <Sidebar />
+            <SideBar />
             <div className="content">
               <Header />
               <div style={style}>

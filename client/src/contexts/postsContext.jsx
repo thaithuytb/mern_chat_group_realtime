@@ -1,5 +1,5 @@
+import postsApi from "api/postsApi";
 import React, { useState } from "react";
-import postsApi from "./../api/postsApi";
 
 export const postsContext = React.createContext();
 

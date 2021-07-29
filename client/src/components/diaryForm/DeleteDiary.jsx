@@ -1,6 +1,6 @@
+import { postsContext } from "contexts/postsContext";
 import React, { useContext } from "react";
 import { BsFillTrashFill as TrashCanIcon } from "react-icons/bs";
-import { postsContext } from "../../contexts/postsContext";
 
 const DeleteDiary = ({_id}) => {
   const { deleteSinglePost, getAllMyPosts } = useContext(postsContext);

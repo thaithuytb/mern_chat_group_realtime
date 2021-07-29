@@ -1,11 +1,9 @@
-import React, { useState, useContext } from "react";
-import { Link } from "react-router-dom";
-import { BiMenu as IconMenu } from "react-icons/bi";
-import { BiX as IconClose } from "react-icons/bi";
-import { FcViewDetails as IconDiary } from "react-icons/fc";
-import { FcMultipleDevices as IconDashboard } from "react-icons/fc";
+import { displayContext } from "contexts/displayContext";
+import React, { useContext, useState } from "react";
 import { AiFillWechat as IconChat } from "react-icons/ai";
-import { displayContext } from './../../../contexts/displayContext';
+import { BiMenu as IconMenu, BiX as IconClose } from "react-icons/bi";
+import { FcMultipleDevices as IconDashboard, FcViewDetails as IconDiary } from "react-icons/fc";
+import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 const SideBar = () => {
